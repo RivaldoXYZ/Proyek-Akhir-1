@@ -39,25 +39,28 @@
     <!-- Navbar End -->
 
     <!-- Section Start -->
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <main class="content">
-            <h1>Toba <span>Gateway</span></h1>
-            <p>Find Your Perfect Guide to Hotels and Things to Do</p>
-            <a href="#" class="cta"> Telusuri Hotel/Penginapan</a>
-        </main>
-    </section>
-    <section id="menu" class="menu">
-        <h2><span>Hotel </span>Terlaris</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2><span>Tentang</span> Kami</h2>
         <div class="row">
-            <div class="menu-card">
-                <img src="#" alt="" class="menu-card-img">
-                <h3 class="menu-card-title">Hotel 1</h3>
-                <p class="menu-card-price">IDR 200K/malam</p>
+            <div class="about-img">
+                <img src="img/foto1.jpg" alt="Tentang Kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa Harus memilih Hotel/Penginapan</h3>
+                <p> Pada saat ini hotel memang berkembang pesat terutama didaerah perkotaan dan parawisata sehingga kata
+                    hotel tentu saja tidak asing lagi ditelinga kita. Di kota-kota besar Indonesia seperti Medan,
+                    Jakarta,Bandung ,Surabaya serta daerah pariwisata seperti Samosir terdapat berbagi hotel dan
+                    penginapan sudah terdapat berbagi hotel dan penginapanmulai dari tarifnya yang murah sampai tarifnya
+                    yang mahal.
+                </p>
+                <p> Hotel merupakan salah satu jenis akomodasi yang mempergunakan sebagian atau keseluruhan bagian untuk
+                    jasa pelayanan penginapan, penyedia makanan dan minuman serta jasa lainnya bagi masyarakat umum yang
+                    dapat dikelola secara komersil.</p>
             </div>
         </div>
     </section>
+
     <footer>
         <div class="social">
             <a href="#"><i data-feather="instagram"></i></a>

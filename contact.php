@@ -39,25 +39,12 @@
     <!-- Navbar End -->
 
     <!-- Section Start -->
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <main class="content">
-            <h1>Toba <span>Gateway</span></h1>
-            <p>Find Your Perfect Guide to Hotels and Things to Do</p>
-            <a href="#" class="cta"> Telusuri Hotel/Penginapan</a>
-        </main>
-    </section>
-    <section id="menu" class="menu">
-        <h2><span>Hotel </span>Terlaris</h2>
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2><span>Kontak</span> Kami</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
-        <div class="row">
-            <div class="menu-card">
-                <img src="#" alt="" class="menu-card-img">
-                <h3 class="menu-card-title">Hotel 1</h3>
-                <p class="menu-card-price">IDR 200K/malam</p>
-            </div>
-        </div>
     </section>
+
     <footer>
         <div class="social">
             <a href="#"><i data-feather="instagram"></i></a>

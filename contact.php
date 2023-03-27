@@ -27,7 +27,7 @@
         <div class="navbar-nav">
             <a href="index.php">Home</a>
             <a href="hotel.php">Hotel</a>
-            <a href="#">Penginapan</a>
+            <a href="penginapan.php">Penginapan</a>
             <a href="about.php">Tentang Kami</a>
             <a href="contact.php">Kontak</a>
         </div>

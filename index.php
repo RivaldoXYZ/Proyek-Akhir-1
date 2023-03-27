@@ -27,7 +27,7 @@
         <div class="navbar-nav">
             <a href="index.php">Home</a>
             <a href="hotel.php">Hotel</a>
-            <a href="#">Penginapan</a>
+            <a href="penginapan.php">Penginapan</a>
             <a href="about.php">Tentang Kami</a>
             <a href="contact.php">Kontak</a>
         </div>
@@ -48,7 +48,7 @@
         </main>
     </section>
     <section id="menu" class="menu">
-        <h2><span>Hotel </span>Terlaris</h2>
+        <h2><span>Rekomendasi</span> Hotel</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
         <div class="row">
             <div class="menu-card">

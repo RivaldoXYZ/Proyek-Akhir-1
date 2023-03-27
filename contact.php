@@ -29,7 +29,7 @@
             <a href="hotel.php">Hotel</a>
             <a href="#">Penginapan</a>
             <a href="about.php">Tentang Kami</a>
-            <a href="#contact">Kontak</a>
+            <a href="contact.php">Kontak</a>
         </div>
         <div class="navbar-extra">
             <a href="#" id="search"><i data-feather="search"></i></a>
@@ -42,10 +42,38 @@
     <!-- Contact -->
     <section id="contact" class="contact">
         <h2><span>Kontak</span> Kami</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
+        <p>Anda dapat mengirimkan pesan kepada kami melalui formulir kontak di bawah ini:</p>
+        <div class="row">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.3673302250577!2d99.14643875009662!3d2.3832205580399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e00fdad2d7341%3A0xf59ef99c591fe451!2sInstitut%20Teknologi%20Del!5e0!3m2!1sid!2sid!4v1679909630657!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            <form action="">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" name="nama" placeholder="Nama">
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="email" name="email" placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" name="telp" placeholder="No.Telepon">
+                </div>
+                <div class="input-group">
+                    <i data-feather="message-square"></i>
+                    <textarea name=" pesan" rows="4" cols="30%" placeholder="Masukkan pesan Anda"></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </div>
     </section>
 
     <footer>
+        <ul>
+            <li><strong>Email:</strong> info@tobainformasi.com</li>
+            <li><strong>Telepon:</strong> +62 812-3456-7890</li>
+        </ul>
         <div class="social">
             <a href="#"><i data-feather="instagram"></i></a>
             <a href="#"><i data-feather="twitter"></i></a>

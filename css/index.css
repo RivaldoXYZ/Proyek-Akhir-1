@@ -231,12 +231,14 @@ body {
     line-height: 1.6rem;
 }
 
-.menu h2 {
+.menu h2,
+.contact h2 {
     margin-bottom: 1rem;
 }
 
 /* Menu */
-.menu p {
+.menu p,
+.contact p {
     text-align: center;
     max-width: 30rem;
     margin: auto;
@@ -268,12 +270,69 @@ body {
 }
 
 
+.contact .row {
+    display: flex;
+    margin-top: 2rem;
+    background-color: #999;
+    zoom: 65%;
+}
+
+.contact .row .map {
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+    margin: 2rem;
+    border: 2px solid var(--color);
+}
+
+.contact .row form {
+    flex: 1 1 45rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    border: 1px solid #eee;
+    padding-left: 2rem;
+    background-color: var(--color);
+    color: #fff;
+}
+
+.contact .row form .input-group input,
+textarea {
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.7rem;
+    background: none;
+    color: #fff;
+
+}
+
+.contact .row form .btn {
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background-color: #F1C40F;
+    border: 1px solid #eee;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 /* Footer */
 footer {
     background-color: var(--bg4);
     text-align: center;
     padding: 1rem 0;
     margin-top: 3rem;
+}
+
+footer ul {
+    margin: auto;
 }
 
 footer .social {
@@ -381,6 +440,19 @@ footer .credit a {
     .menu p {
         font-size: 1.2rem;
     }
+
+    .contact .row {
+        flex-wrap: wrap;
+    }
+
+    .contact .row .map {
+        height: 30rem;
+    }
+
+    .contact .row form {
+        padding-top: 0;
+    }
+
 }
 
 

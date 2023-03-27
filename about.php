@@ -29,7 +29,7 @@
             <a href="hotel.php">Hotel</a>
             <a href="#">Penginapan</a>
             <a href="about.php">Tentang Kami</a>
-            <a href="#contact">Kontak</a>
+            <a href="contact.php">Kontak</a>
         </div>
         <div class="navbar-extra">
             <a href="#" id="search"><i data-feather="search"></i></a>
@@ -62,6 +62,10 @@
     </section>
 
     <footer>
+        <ul>
+            <li><strong>Email:</strong> info@tobainformasi.com</li>
+            <li><strong>Telepon:</strong> +62 812-3456-7890</li>
+        </ul>
         <div class="social">
             <a href="#"><i data-feather="instagram"></i></a>
             <a href="#"><i data-feather="twitter"></i></a>

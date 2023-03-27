@@ -23,10 +23,10 @@
 <body>
     <!-- Navbar Start-->
     <nav class="navbar">
-        <a href="#" class="navbar-logo">Toba <span>Gateway</span></a>
+        <a href="index.php" class="navbar-logo">Toba <span>Gateway</span></a>
         <div class="navbar-nav">
-            <a href="#">Home</a>
-            <a href="#">Hotel</a>
+            <a href="index.php">Home</a>
+            <a href="hotel.php">Hotel</a>
             <a href="#">Penginapan</a>
             <a href="#about">Tentang Kami</a>
             <a href="#contact">Kontak</a>
@@ -57,12 +57,15 @@
             </div>
             <div class="content">
                 <h3>Kenapa Harus memilih Hotel/Penginapan</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium, officia consequuntur
-                    ratione
-                    quos soluta vero iste. Optio, voluptatum placeat?</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error atque in reprehenderit id quas? Eius
-                    quibusdam atque quidem aperiam amet facilis, aut, fugiat ut aspernatur eveniet optio rem in
-                    veritatis.</p>
+                <p> Pada saat ini hotel memang berkembang pesat terutama didaerah perkotaan dan parawisata sehingga kata
+                    hotel tentu saja tidak asing lagi ditelinga kita. Di kota-kota besar Indonesia seperti Medan,
+                    Jakarta,Bandung ,Surabaya serta daerah pariwisata seperti Samosir terdapat berbagi hotel dan
+                    penginapan sudah terdapat berbagi hotel dan penginapanmulai dari tarifnya yang murah sampai tarifnya
+                    yang mahal.
+                </p>
+                <p> Hotel merupakan salah satu jenis akomodasi yang mempergunakan sebagian atau keseluruhan bagian untuk
+                    jasa pelayanan penginapan, penyedia makanan dan minuman serta jasa lainnya bagi masyarakat umum yang
+                    dapat dikelola secara komersil.</p>
             </div>
         </div>
     </section>

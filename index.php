@@ -45,15 +45,28 @@
         </main>
     </section>
     <section id="menu" class="menu">
-        <h2><span>Rekomendasi</span> Hotel</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
-        <div class="row">
-            <div class="menu-card">
-                <img src="#" alt="" class="menu-card-img">
-                <h3 class="menu-card-title">Hotel 1</h3>
-                <p class="menu-card-price">IDR 200K/malam</p>
+        <main class="hotel">
+            <h2><span>Rekomendasi</span> Hotel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
+            <div class="row">
+                <div class="menu-card">
+                    <img src="#" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
             </div>
-        </div>
+        </main>
+        <main class="penginapan">
+            <h2><span>Rekomendasi</span> Hotel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
+            <div class="row">
+                <div class="menu-card">
+                    <img src="#" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+            </div>
+        </main>
         <script>
         // Agar Menu tidak kembali ke home
         var link = document.getElementById('hamburger-menu');

@@ -34,47 +34,6 @@
         <!-- cSS -->
         <link rel="stylesheet" href="css/index.css">
     </nav>
-    <!-- Navbar End -->
-    <!-- Section Start -->
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <main class="content">
-            <h1>Toba <span>Gateway</span></h1>
-            <p>Find Your Perfect Guide to Hotels and Things to Do</p>
-            <a href="#" class="cta"> Telusuri Hotel/Penginapan</a>
-        </main>
-    </section>
-    <section id="menu" class="menu">
-        <main class="hotel">
-            <h2><span>Rekomendasi</span> Hotel</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
-            <div class="row">
-                <div class="menu-card">
-                    <img src="#" alt="" class="menu-card-img">
-                    <h3 class="menu-card-title">Hotel 1</h3>
-                    <p class="menu-card-price">IDR 200K/malam</p>
-                </div>
-            </div>
-        </main>
-        <main class="penginapan">
-            <h2><span>Rekomendasi</span> Penginapan</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
-            <div class="row">
-                <div class="menu-card">
-                    <img src="#" alt="" class="menu-card-img">
-                    <h3 class="menu-card-title">Hotel 1</h3>
-                    <p class="menu-card-price">IDR 200K/malam</p>
-                </div>
-            </div>
-        </main>
-        <script>
-        // Agar Menu tidak kembali ke home
-        var link = document.getElementById('hamburger-menu');
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-        });
-        </script>
-    </section>
     <footer>
         <ul>
             <li><strong>Email:</strong> info@tobainformasi.com</li>

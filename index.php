@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="css/index.css">
     </nav>
     <!-- Navbar End -->
-    <!-- Section Start -->
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <main class="content">

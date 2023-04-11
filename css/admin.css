@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    height: 100vh;
+}
+
+.login-box {
+    width: 35rem;
+    height: 25rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.kotak {
+    border: solid;
+}
+
+.summary-kategory {
+    border-radius: 15px;
+    background-color: #0085a1;
+}
+
+.summary-hotel {
+    border-radius: 15px;
+    background-color: #00a138;
+}
+
+.no-decoration {
+    text-decoration: none;
+}

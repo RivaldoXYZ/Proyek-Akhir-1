@@ -22,7 +22,7 @@
 
 
 <body>
- <!-- Navbar Start-->
+    <!-- Navbar Start-->
     <nav class="navbar">
         <div class="container">
             <div class="box-navbar">
@@ -61,7 +61,7 @@
 
     <!-- Icon -->
     <script>
-    feather.replace()
+        feather.replace()
     </script>
 
     <script src=" js/index.js">

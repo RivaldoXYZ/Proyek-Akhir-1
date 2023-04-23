@@ -2,8 +2,13 @@
     require "session.php";
     require "../Connection/koneksi.php";
 
-    $querykategory = mysqli_query($con, "SELECT * FROM kategori");
-    $jumlah = mysqli_num_rows($querykategory);
+    $querykategori = mysqli_query($con, "SELECT * FROM kategori");
+    $jumlahkategori = mysqli_num_rows($querykategori);
+
+    $queryhotel = mysqli_query($con, "SELECT * FROM hotel");
+    $jumlahhotel = mysqli_num_rows($queryhotel);
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +34,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                 <a class="nav-link me-4" aria-current="page" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link me-4" href="kategori.php">Kategori</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link me-4" href="hotel.php">Hotel</a>
@@ -58,7 +66,8 @@
                         </div>
                         <div class="col-6 text-white">
                             <h3 class="fs-2">Kategori</h3>
-                            <p class="fs-4">4 kategori</p>
+                            <p class="fs-4"><?php echo $jumlahkategori." " ?>Kategori
+                            </p>
                             <p><a href="kategori.php" class="text-white no-decoration">Lihat Detail</a></p>
                         </div>
                     </div>
@@ -72,7 +81,7 @@
                         </div>
                         <div class="col-6 text-white">
                             <h3 class="fs-2">Hotel</h3>
-                            <p class="fs-4">.. Hotel</p>
+                            <p class="fs-4"><?php echo $jumlahhotel . " " ?> Hotel</p>
                             <p><a href="hotel.php" class="text-white no-decoration">Lihat Detail</a></p>
                         </div>
                     </div>

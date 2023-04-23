@@ -31,3 +31,7 @@ body {
 .no-decoration {
     text-decoration: none;
 }
+
+form div {
+    margin-bottom: 15px;
+}

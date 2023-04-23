@@ -53,6 +53,10 @@ i {
     right: 0;
     z-index: 9999;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 .navbar .box-navbar {
@@ -226,7 +230,7 @@ i {
     min-height: 50vh;
     display: flex;
     align-items: center;
-    padding: 100px 0 50px 0;
+    padding: 5rem 0 5rem 0;
 }
 
 .services .box-services {
@@ -234,12 +238,14 @@ i {
     flex-wrap: wrap;
     justify-content: space-evenly;
     row-gap: 50px;
+
 }
 
 .services .box-services .box {
     width: 300px;
     text-align: center;
     color: var(--color);
+
 }
 
 .services .box-services .box i {
@@ -249,11 +255,11 @@ i {
 }
 
 .services .box-services .box p {
-    font-weight: 100;
+    font-weight: 300;
+    text-align: center;
 }
 
 /* About */
-
 .about h2,
 .menu h2,
 .contact h2 {
@@ -276,7 +282,7 @@ i {
 }
 
 .about .row .about-img {
-    flex: 1 1 15rem;
+    flex: 1 1 35rem;
 }
 
 .about .row .about-img img {
@@ -315,34 +321,56 @@ i {
 
 .menu p,
 .contact p {
-    text-align: center;
+
     max-width: 30rem;
     margin: auto;
     font-size: 1rem;
-    font-weight: 100;
     line-height: 1.6rem;
-    color: var(--bg1);
+    color: var(--color);
 }
 
 .menu .row {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 5rem;
+    margin: 3rem 0;
     justify-content: center;
-
 }
 
 .menu .row .menu-card {
-    text-align: center;
+    text-align: left;
+    margin: 1rem;
+    width: 20rem;
+    box-shadow: 0px 3px 6px rgb(125, 125, 125, 1);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .menu .row .menu-card img {
-    border-radius: 50%;
-    width: 80%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    -ms-border-radius: 10px 10px 0 0;
+    -o-border-radius: 10px 10px 0 0;
+}
+
+.menu .row .menu-card p {
+    padding: 0.5rem 1rem;
+    text-align: left;
 }
 
 .menu .row .menu-card .menu-card-title {
     margin-top: 1rem auto 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+.menu .row .menu-card .menu-card-price {
+    margin-top: 2rem;
+
 }
 
 
@@ -388,17 +416,22 @@ footer .credit a {
     html {
         font-size: 75%;
     }
+
+    .menu .row .menu-card {
+        width: 18rem;
+        margin: 3.5rem 0.8rem;
+    }
 }
 
 /* Tablet */
 @media (max-width: 768px) {
     html {
-        font-size: 58%;
+        font-size: 50%;
     }
 
     #hamburger-menu {
         display: inline-block;
-        margin-right: 10rem;
+        margin-right: 1rem;
     }
 
     .navbar .navbar-nav {
@@ -470,6 +503,15 @@ footer .credit a {
 
     .menu p {
         font-size: 1.2rem;
+    }
+
+    .menu .row {
+        margin: 0;
+    }
+
+    .menu .row .menu-card {
+        width: 15rem;
+        margin: 3rem 0.5rem;
     }
 
     .contact .row {

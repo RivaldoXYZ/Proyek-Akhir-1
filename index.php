@@ -8,15 +8,23 @@
     <title>Informasi Hotel/Penginapan/Tempat Hiburan di Danau Toba</title>
     <!-- Icon -->
     <script src="https://kit.fontawesome.com/636810249d.js" crossorigin="anonymous"></script>
-    
+
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
     <!-- cSS -->
     <link rel="stylesheet" href="css/home.css">
-    
-    
+    <!-- Bootstrap
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script> -->
+
+
 </head>
 
 <body>
@@ -78,11 +86,50 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, id.</p>
             <div class="row">
                 <div class="menu-card">
-                    <img src="#" alt="" class="menu-card-img">
+                    <img src="img/Niagara-1.jpg" alt="" class="menu-card-img">
                     <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+                <div class="menu-card">
+                    <img src="img/Labersa-1.jpg" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 2</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+                <div class="menu-card">
+                    <img src="img/Niagara-2.jpg" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 3</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+                <div class="menu-card">
+                    <img src="img/foto1.jpg" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+                <div class="menu-card">
+                    <img src="img/Niagara-1.jpg" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
+                    <p class="menu-card-price">IDR 200K/malam</p>
+                </div>
+                <div class="menu-card">
+                    <img src="img/Niagara-1.jpg" alt="" class="menu-card-img">
+                    <h3 class="menu-card-title">Hotel 1</h3>
+                    <p class="menu-card-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nam debitis
+                        hic fugiat error ab sit quod tempore quos culpa.</p>
                     <p class="menu-card-price">IDR 200K/malam</p>
                 </div>
             </div>
+
+
         </main>
     </section>
     <section id="penginapan" class="menu">
@@ -97,7 +144,7 @@
                 </div>
             </div>
         </main>
-    </section>  
+    </section>
     <section class="about" id="about">
         <h2><span>Tentang</span> Kami</h2>
         <div class="row">
@@ -106,11 +153,11 @@
             </div>
             <div class="content">
                 <h3>Kenapa Harus memilih Hotel/Penginapan</h3>
-                <p>Pada saat ini hotel memang berkembang pesat terutdama didaerah perkotaan dan parawisata sehingga kata
+                <!-- <p>Pada saat ini hotel memang berkembang pesat terutama didaerah perkotaan dan parawisata sehingga kata
                     hotel tentu saja tidak asing lagi ditelinga kita.Di kota-kota besar Indonesia seperti Medan,
                     Jakarta,Bandung ,Surabaya serta daerah pariwisata seperti Samosir terdapat berbagi hotel dan
                     penginapan sudah terdapat berbagi hotel dan penginapanmulai dari tarifnya yang murah sampai tarifnya
-                    yang mahal.</p>
+                    yang mahal.</p> -->
                 <p> Hotel merupakan salah satu jenis akomodasi yang mempergunakan sebagian atau keseluruhan bagian untuk
                     jasa pelayanan penginapan, penyedia makanan dan minuman serta jasa lainnya bagi masyarakat umum yang
                     dapat dikelola secara komersil.
@@ -136,7 +183,7 @@
             <p>Created by <a href="">Kelompok 14.</a> | &copy; 2023.</p>
         </div>
     </footer>
-<script src=" js/index.js"></script>
+    <script src=" js/index.js"></script>
 
 </body>
 

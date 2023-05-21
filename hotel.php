@@ -20,6 +20,8 @@ $queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah,
 
     <!-- cSS -->
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home_active.css">
+
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -28,19 +30,9 @@ $queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah,
     <!-- Navbar Start-->
     <?php require('navbar_active.php') ?>
     <!-- Navbar End -->
-    <div>
 
-    </div>
-    <div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
     <section class="packages" id="hotel">
         <h1 class="heading">
-
             <span>L</span>
             <span>i</span>
             <span>s</span>
@@ -51,7 +43,6 @@ $queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah,
             <span>t</span>
             <span>e</span>
             <span>l</span>
-
         </h1>
         <div class="box-container">
             <?php

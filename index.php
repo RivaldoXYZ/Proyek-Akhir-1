@@ -1,9 +1,10 @@
 <?php
 require "Connection/koneksi.php";
 
-$queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah, harga_tertinggi, deskripsi FROM hotel LIMIT 6")
+$queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah, harga_tertinggi, deskripsi FROM hotel WHERE akomodasi='hotel' LIMIT 6");
+$querypenginapan = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah, harga_tertinggi, deskripsi FROM hotel WHERE akomodasi='penginapan' LIMIT 6");
 
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,14 +88,11 @@ $queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah,
 
     <section class="packages" id="hotel">
         <h1 class="heading">
-            <span>p</span>
-            <span>a</span>
-            <span>c</span>
-            <span>k</span>
-            <span>a</span>
-            <span>g</span>
+            <span>H</span>
+            <span>o</span>
+            <span>t</span>
             <span>e</span>
-            <span>s</span>
+            <span>l</span>
         </h1>
         <div class="box-container">
             <?php
@@ -130,7 +128,7 @@ $queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah,
                 </div>
             <?php } ?>
         </div>
-        <a href="hotel.php" class="btn">See More</a>
+        <a href="hotel.php" class="more">See More</a>
     </section>
     <!-- <section class="review" id="review">
         <h1 class="heading">

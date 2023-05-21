@@ -347,7 +347,7 @@ section {
 }
 
 .packages .box-container .box .content h3 i {
-    color: var(--orange);
+    color: var(--biru);
 }
 
 .packages .box-container .box .content p {
@@ -373,8 +373,6 @@ section {
     font-size: 1rem;
     text-decoration: line-through;
 }
-
-
 
 .gallery .box-container {
     display: flex;

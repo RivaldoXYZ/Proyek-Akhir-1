@@ -2,6 +2,7 @@
 require "Connection/koneksi.php";
 $id = $_GET['id'];
 $query = mysqli_query($con, "SELECT * FROM hotel WHERE id = '$id'");
+$jumlah = mysqli_num_rows($query);
 $data = mysqli_fetch_array($query);
 ?>
 
@@ -22,6 +23,8 @@ $data = mysqli_fetch_array($query);
 
     <!-- cSS -->
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home_active.css">
+
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -33,14 +36,48 @@ $data = mysqli_fetch_array($query);
     <div>
 
     </div>
-    <div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
-    <div>
+    <div class="detail" id="detail">
+        <div class="row">
+            <div class="detail-img">
+                <img src="img/image/<?php echo $data['foto']; ?>" alt="">
+            </div>
+            <div class="content">
+                <h2>
+                    <?php echo $data['nama'] ?>
+                </h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <p>
+                    Alamat :
+                    <?php echo $data['alamat']; ?>
+                </p>
+                <p>
+                    Koordinat :
+                    <?php echo $data['kordinat']; ?>
+                </p>
+
+                <p>
+                    Harga :
+                    Rp
+                    <?php echo $data['harga_terendah']; ?> -
+                    Rp
+                    <?php echo $data['harga_tertinggi']; ?>
+                </p>
+                <p>
+                    Deskripsi : <br>
+                    <?php echo $data['deskripsi']; ?>
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h1>Maps</h1>
+            <iframe class="maps" src=" <?php echo $data['maps']; ?>" frameborder="0"></iframe>
+        </div>
     </div>
     <div>
         <?php require("footer.php") ?>

@@ -69,7 +69,7 @@ $data = mysqli_fetch_array($query);
             <?php
             if (isset($_POST['edit_kategori'])) {
                 $kategori = htmlspecialchars($_POST['kategori']);
-                if ($data['nama' == $kategori]) {
+                if ($data['nama'] == $kategori) {
                     ?>
                     <meta http-equiv="refresh" content="0; url=kategori.php">
                     <?php
@@ -84,13 +84,12 @@ $data = mysqli_fetch_array($query);
                         </div>
                         <?php
                     } else {
-                        $edit = mysqli_query($con, "UPDATE kategori SET nama ='$kategori' WHERE id = '$id' ");
+                        $edit = mysqli_query($con, "UPDATE kategori SET nama ='$kategori' WHERE id = '$id'");
                         if ($edit) {
                             ?>
                             <div class="alert alert-success mt-3" role="alert">
                                 Kategori Berhasil diupdate
                             </div>
-
                             <meta http-equiv="refresh" content="0; url=kategori.php">
                             <?php
                         } else {

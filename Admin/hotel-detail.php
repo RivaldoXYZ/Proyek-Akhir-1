@@ -42,32 +42,18 @@ function generateRandomString($length = 10)
 
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-4" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="kategori.php">Kategori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="hotel.php">Hotel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php require("nav.php") ?>
     <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page"><a href="../Admin/"
+                        class="no-decoration text-muted"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> <a href="../Admin/hotel.php"
+                        class="no-decoration text-muted">Hotel</a></li>
+                <li class="breadcrumb-item active" aria-current="page"> <a href="../Admin/hotel_tambah.php"
+                        class="no-decoration text-muted">Tambah Hotel</a></li>
+            </ol>
+        </nav>
         <h2>Detail Hotel</h2>
         <div class="col-12 col-md-6">
             <form action="" method="post" enctype="multipart/form-data">
@@ -90,13 +76,13 @@ function generateRandomString($length = 10)
                     </select>
                 </div>
                 <div>
-                    <label for="kordinat" class="mb-2 mt-2">Kordinat</label>
-                    <input type="text" name="kordinat" id="kordinat" value="<?php echo $data['kordinat']; ?>"
+                    <label for="alamat" class="mb-2 mt-2">Alamat</label>
+                    <input type="text" name="alamat" id="alamat" value="<?php echo $data['alamat']; ?>"
                         class="form-control" autocomplete="off">
                 </div>
                 <div>
-                    <label for="lokasi" class="mb-2 mt-2">Lokasi</label>
-                    <input type="text" name="lokasi" id="lokasi" value="<?php echo $data['lokasi']; ?>"
+                    <label for="kordinat" class="mb-2 mt-2">Kordinat</label>
+                    <input type="text" name="kordinat" id="kordinat" value="<?php echo $data['kordinat']; ?>"
                         class="form-control" autocomplete="off">
                 </div>
                 <div>
@@ -108,9 +94,19 @@ function generateRandomString($length = 10)
                     <input type="file" name="foto" id="foto" class="form-control">
                 </div>
                 <div>
-                    <label for="detail" class="mb-2 mt-2">Detail</label>
-                    <textarea name="detail" id="detail" cols="30" rows="10" class="form-control">
-                        <?php echo $data['detail']; ?>
+                    <label for="harga_terendah" class="mb-2 mt-2">Harga Terendah</label>
+                    <input type="text" name="harga_terendah" id="harga_terendah"
+                        value="<?php echo $data['harga_terendah']; ?>" class="form-control" autocomplete="off">
+                </div>
+                <div>
+                    <label for="harga_tertinggi" class="mb-2 mt-2">Harga Tertinggi</label>
+                    <input type="text" name="harga_tertinggi" id="harga_tertinggi"
+                        value="<?php echo $data['harga_tertinggi']; ?>" class="form-control" autocomplete="off">
+                </div>
+                <div>
+                    <label for="deskripsi" class="mb-2 mt-2">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control">
+                        <?php echo $data['deskripsi']; ?>
                     </textarea>
                 </div>
                 <div class="mt-3">
@@ -122,9 +118,11 @@ function generateRandomString($length = 10)
             if (isset($_POST['edit_hotel'])) {
                 $nama = htmlspecialchars($_POST['nama']);
                 $kategori = htmlspecialchars($_POST['kategori']);
+                $alamat = htmlspecialchars($_POST['alamat']);
                 $kordinat = htmlspecialchars($_POST['kordinat']);
-                $lokasi = htmlspecialchars($_POST['lokasi']);
-                $detail = htmlspecialchars($_POST['detail']);
+                $harga_terendah = htmlspecialchars($_POST['harga_terendah']);
+                $harga_tertinggi = htmlspecialchars($_POST['harga_tertinggi']);
+                $deskripsi = htmlspecialchars($_POST['deskripsi']);
 
                 $target_dir = "../img/image/";
                 $nama_file = basename($_FILES["foto"]["name"]);
@@ -133,14 +131,14 @@ function generateRandomString($length = 10)
                 $image_size = $_FILES["foto"]["size"];
                 $random_name = generateRandomString(20);
                 $name = $random_name . "." . $imageFileType;
-                if ($nama == '' || $kategori == '' || $lokasi == '') {
+                if ($nama == '' || $kategori == '' || $alamat == '') {
                     ?>
                     <div class="alert alert-warning mt-3" role="alert">
                         Nama,Kategori, Kordinat, dan Lokasi wajib di isi
                     </div>
                     <?php
                 } else {
-                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', lokasi='$lokasi', kordinat='$kordinat', detail='$detail' WHERE id='$id'");
+                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',harga_tertinggi='$harga_tertinggi', deskripsi='$deskripsi' WHERE id='$id'");
 
                     if ($nama_file != '') {
                         if ($image_size > 500000000) {
@@ -172,6 +170,16 @@ function generateRandomString($length = 10)
                             }
                         }
                     }
+                    if ($queryUpdate) {
+                        ?>
+                        <div class="alert alert-success mt-3" role="alert">
+                            Hotel Berhasil diHapus
+                            <meta http-equiv="refresh" content="0; url=hotel.php">
+                        </div>
+                        <?php
+                    } else {
+                        echo mysqli_error($con);
+                    }
                 }
             }
             if (isset($_POST['hapus_hotel'])) {
@@ -187,7 +195,6 @@ function generateRandomString($length = 10)
                     echo mysqli_error($con);
                 }
             }
-
             ?>
         </div>
     </div>

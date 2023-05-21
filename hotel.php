@@ -1,3 +1,8 @@
+<?php
+require "Connection/koneksi.php";
+$queryhotel = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_terendah, harga_tertinggi, deskripsi FROM hotel WHERE akomodasi='hotel' LIMIT 6")
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,66 +11,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informasi Hotel/Penginapan/Tempat Hiburan di Danau Toba</title>
-    <!-- JS -->
-
-    <script src="https://unpkg.com/feather-icons"></script>
-
+    <!-- Icon -->
+    <script src="https://kit.fontawesome.com/636810249d.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+
     <!-- cSS -->
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/home.js"></script>
-
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 
 <body>
     <!-- Navbar Start-->
-    <nav class="navbar">
-        <div class="container">
-            <div class="box-navbar">
-                <a href="index.php" class="navbar-logo">Toba<span>Gateway</span></a>
-                <div class="navbar-nav">
-                    <a href="index.php">Home</a>
-                    <a href="hotel.php">Hotel</a>
-                    <a href="penginapan.php">Penginapan</a>
-                    <a href="#about">Tentang Kami</a>
-                    <a href="contact.php">Kontak</a>
-                </div>
-                <div class="navbar-extra">
-                    <a href="#" id="search"><i data-feather="search"></i></a>
-                    <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php require('navbar_active.php') ?>
     <!-- Navbar End -->
-    <footer>
-        <ul>
-            <li><strong>Email:</strong> info@tobainformasi.com</li>
-            <li><strong>Telepon:</strong> +62 812-3456-7890</li>
-        </ul>
-        <div class="social">
-            <a href="#"><i data-feather="instagram"></i></a>
-            <a href="#"><i data-feather="twitter"></i></a>
-            <a href="#"><i data-feather="facebook"></i></a>
+    <div>
+
+    </div>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <section class="packages" id="hotel">
+        <h1 class="heading">
+
+            <span>L</span>
+            <span>i</span>
+            <span>s</span>
+            <span>t</span>
+            <span class="space"> </span>
+            <span>H</span>
+            <span>o</span>
+            <span>t</span>
+            <span>e</span>
+            <span>l</span>
+
+        </h1>
+        <div class="box-container">
+            <?php
+            while ($data = mysqli_fetch_array($queryhotel)) {
+                ?>
+                <div class="box">
+                    <img decoding="async" src="img/image/<?php echo $data['foto'] ?>" alt="">
+                    <div class="content">
+                        <p class="location"><i class="fas fa-map-marker-alt"></i>
+                            <?php echo $data['alamat'] ?>
+                        </p>
+                        <h3>
+                            <?php echo $data['nama'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $data['deskripsi'] ?>
+                        </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="price">
+                            Rp.
+                            <?php echo $data['harga_terendah'] ?> -
+                            Rp.
+                            <?php echo $data['harga_tertinggi'] ?>
+                        </div>
+                        <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-        <div class="credit">
-            <p>Created by <a href="">Kelompok 14.</a> | &copy; 2023.</p>
-        </div>
-    </footer>
+        <a href="hotel.php" class="btn">See More</a>
+    </section>
+    <div>
+        <?php require("footer.php") ?>
+        <script src=" js/index_active.js"></script>
+    </div>
 
-    <!-- Section End -->
-
-    <!-- Icon -->
-    <script>
-        feather.replace()
-    </script>
-
-    <script src=" js/index.js">
-    </script>
 </body>
 
 </html>

@@ -39,32 +39,7 @@ function generateRandomString($length = 10)
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-4" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="kategori.php">Kategori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="hotel.php">Hotel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <?php require("nav.php") ?>
     <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -74,168 +49,83 @@ function generateRandomString($length = 10)
                         class="no-decoration text-muted">Hotel</a></li>
             </ol>
         </nav>
-        <div class="my-5 col-12 col-md-6">
-            <h3>+ Tambah Hotel</h3>
-            <form action="" method="post" enctype="multipart/form-data">
-                <div>
-                    <label for="nama" class="mb-2 mt-2">Nama Hotel</label>
-                    <input type="text" name="nama" id="nama" placeholder="Masukkan Nama hotel" class="form-control"
-                        autocomplete="off">
-                </div>
-                <div>
-                    <label for="kategori" class="mb-2 mt-2"></label>Kategori</label>
-                    <select name="kategori" id="kategori" class="form-control">
-                        <option value="">---- Pilih Kategori ----</option>
-                        <?php
-                        while ($datakategori = mysqli_fetch_array($querykategory)) {
-                            ?>
-                            <option value="<?php echo $datakategori['id']; ?>"><?php echo $datakategori['nama']; ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="kordinat" class="mb-2 mt-2">Kordinat</label>
-                    <input type="text" name="kordinat" id="kordinat" placeholder="Masukkan Kordinat Hotel"
-                        class="form-control" autocomplete="off">
-                </div>
-                <div>
-                    <label for="lokasi" class="mb-2 mt-2">Lokasi</label>
-                    <input type="text" name="lokasi" id="lokasi" placeholder="Masukkan Lokasi Hotel"
-                        class="form-control" autocomplete="off">
-                </div>
-                <div>
-                    <label for="foto" class="mb-2 mt-2">Foto</label>
-                    <input type="file" name="foto" id="foto" class="form-control">
-                </div>
-                <div>
-                    <label for="detail" class="mb-2 mt-2">Detail</label>
-                    <textarea name="detail" id="detail" cols="30" rows="10" class="form-control"></textarea>
-                </div>
-                <div class="mt-3">
-                    <button class="btn btn-primary" type="submit" name="simpan_hotel">Simpan</button>
-                </div>
-            </form>
-            <?php
-            if (isset($_POST['simpan_hotel'])) {
-                $nama = htmlspecialchars($_POST['nama']);
-                $kategori = htmlspecialchars($_POST['kategori']);
-                $kordinat = htmlspecialchars($_POST['kordinat']);
-                $lokasi = htmlspecialchars($_POST['lokasi']);
-                $detail = htmlspecialchars($_POST['detail']);
-
-                $target_dir = "../img/image/";
-                $nama_file = basename($_FILES["foto"]["name"]);
-                $target_file = $target_dir . $nama_file;
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $image_size = $_FILES["foto"]["size"];
-                $random_name = generateRandomString(20);
-                $name = $random_name . "." . $imageFileType;
-
-
-                if ($nama == '' || $kategori == '' || $lokasi == '') {
-                    ?>
-                    <div class="alert alert-warning mt-3" role="alert">
-                        Nama,Kategori, Kordinat, dan Lokasi wajib di isi
-                    </div>
+        <div class="text-center m-3">
+            <h2>List Hotel</h2>
+            <p class="text-muted">Berikut adalah daftar list hotel yang ada pada database anda</p>
+        </div>
+        <div class="table-responsive mt-3">
+            <table class=" table">
+                <thead>
+                    <tr>
+                        <th>No. </th>
+                        <th>Nama </th>
+                        <th>Kategori</th>
+                        <th>Alamat</th>
+                        <th>Kordinat</th>
+                        <th>Harga Terendah</th>
+                        <th>Harga Tertinggi</th>
+                        <th>Deskripsi</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php
-                } else {
-                    if ($nama_file != '') {
-                        if ($image_size > 500000) {
-                            ?>
-                            <div class="alert alert-warning mt-3" role="alert">
-                                File Tidak boleh lebih dari 500 Kb
-                            </div>
-                            <?php
-                        } else {
-                            if ($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png') {
-                                ?>
-                                <div class="alert alert-warning mt-3" role="alert">
-                                    Format Gambar tidak sesuai
-                                </div>
-                                <?php
-                            } else {
-                                move_uploaded_file($_FILES["foto"]["tmp_name"], $target_dir . $name);
-                            }
-                        }
-                    }
-
-                    $querytambah = mysqli_query($con, "INSERT INTO hotel(kategori_id, nama,  lokasi, kordinat, foto, detail) VALUES ('$kategori', '$nama', '$lokasi', '$kordinat', '$name', '$detail')");
-                    if ($querytambah) {
+                    if ($jumlah == 0) {
                         ?>
-                        <div class="alert alert-success mt-3" role="alert">
-                            Data Hotel Berhasil disimpan
-                        </div>
-
-                        <meta http-equiv="refresh" content="0; url=hotel.php">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan=3 class="text-center" colspan="10">Data Hotel Tidak Tersedia</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         <?php
                     } else {
-                        echo mysqli_error($con);
-                    }
-                }
-            } ?>
-        </div>
-        <div class="mt3">
-            <h2>List hotel </h2>
-            <div class="table-responsive mt-3">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No. </th>
-                            <th>Nama </th>
-                            <th>Kategori</th>
-                            <th>Lokasi</th>
-                            <th>Kordinat</th>
-                            <th>Foto</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        if ($jumlah == 0) {
+                        $jumlah = 1;
+                        while ($data = mysqli_fetch_array($queryhotel)) {
                             ?>
                             <tr>
-                                <td colspan=3 class="text-center">Data Hotel Tidak Tersedia</td>
+                                <td>
+                                    <?php echo $jumlah; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['nama']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['nama_kategori']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['alamat']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['kordinat']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['harga_terendah']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['harga_tertinggi']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['deskripsi']; ?>
+                                </td>
+                                <td>
+                                    <a href="hotel-detail.php? id=<?php echo $data['id'] ?>" class="btn btn-info"><i
+                                            class="fas fa-search"></i>
+                                    </a>
+                                </td>
                             </tr>
                             <?php
-                        } else {
-                            $jumlah = 1;
-                            while ($data = mysqli_fetch_array($queryhotel)) {
-                                ?>
-                                <tr>
-                                    <td>
-                                        <?php echo $jumlah; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['nama']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['nama_kategori']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['lokasi']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['kordinat']; ?>
-                                    </td>
-                                    <td>
-                                        <?php echo $data['foto']; ?>
-                                    </td>
-                                    <td>
-                                        <a href="hotel-detail.php? id=<?php echo $data['id'] ?>" class="btn btn-info"><i
-                                                class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php
-                                $jumlah++;
-                            }
+                            $jumlah++;
                         }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <a href="hotel_tambah.php" class="btn btn-dark mb-3">Add New</a>
         </div>
     </div>
 </body>

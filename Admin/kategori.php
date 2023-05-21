@@ -26,32 +26,7 @@ $jumlah = mysqli_num_rows($querykategory);
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link me-4" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="kategori.php">Kategori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="hotel.php">Hotel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-4" href="logout.php">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <?php require("nav.php") ?>
     <div class="container mt-5">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -61,50 +36,11 @@ $jumlah = mysqli_num_rows($querykategory);
                         class="no-decoration text-muted">Kategori</a></li>
             </ol>
         </nav>
-        <div class="my-5 col-12 col-md-6">
-            <h3>+ Tambah Kategori</h3>
-            <form action="" method="post">
-                <div>
-                    <label for="kategori" class="mb-2 mt-2">Kategori</label>
-                    <input type="text" name="kategori" id="kategori" placeholder="Masukkan Nama Kategori"
-                        class="form-control">
-                </div>
-                <div class="mt-3">
-                    <button class="btn btn-primary" type="submit" name="simpan_kategori">Simpan</button>
-                </div>
-            </form>
-            <?php
-            if (isset($_POST['simpan_kategori'])) {
-                $kategori = htmlspecialchars($_POST['kategori']);
-
-                $queryCheck = mysqli_query($con, "SELECT nama FROM kategori WHERE nama ='$kategori'");
-                $jumlahCheck = mysqli_num_rows($queryCheck);
-
-                if ($jumlahCheck > 0) {
-                    ?>
-                    <div class="alert alert-warning mt-3" role="alert">
-                        Kategori Sudah ada
-                    </div>
-                    <?php
-                } else {
-                    $simpan = mysqli_query($con, "INSERT INTO kategori (nama) VALUES ('$kategori') ");
-                    if ($simpan) {
-                        ?>
-                        <div class="alert alert-success mt-3" role="alert">
-                            Kategori Berhasil disimpan
-                        </div>
-
-                        <meta http-equiv="refresh" content="0; url=kategori.php">
-                        <?php
-                    } else {
-                        echo mysqli_error($con);
-                    }
-                }
-            } ?>
-
+        <div class="text-center m-3">
+            <h3>List Kategori</h3>
+            <p class="text-muted">Berikut adalah daftar list kategori yang ada pada database anda</p>
         </div>
         <div class="mt3">
-            <h2>List Kategori </h2>
             <div class="table-responsive mt-3">
                 <table class="table">
                     <thead>
@@ -134,7 +70,7 @@ $jumlah = mysqli_num_rows($querykategory);
                                         <?php echo $data['nama']; ?>
                                     </td>
                                     <td>
-                                        <a href="kategori-detail.php? id=<?php echo $data['id'] ?>" class="btn btn-info"><i
+                                        <a href="kategori-detail.php?id=<?php echo $data['id'] ?>" class="btn btn-info"><i
                                                 class="fas fa-search"></i>
                                         </a>
                                     </td>
@@ -147,6 +83,47 @@ $jumlah = mysqli_num_rows($querykategory);
                     </tbody>
                 </table>
             </div>
+        </div>
+
+        <div class="my-5 col-12 col-md-6">
+            <h3>+ Tambah Kategori</h3>
+            <form action="" method="post">
+                <div>
+                    <label for="kategori" class="mb-2 mt-2">Kategori</label>
+                    <input type="text" name="kategori" id="kategori" placeholder="Masukkan Nama Kategori"
+                        class="form-control">
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-primary" type="submit" name="simpan_kategori">Simpan</button>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['simpan_kategori'])) {
+                $kategori = htmlspecialchars($_POST['kategori']);
+                $queryCheck = mysqli_query($con, "SELECT nama FROM kategori WHERE nama ='$kategori'");
+                $jumlahCheck = mysqli_num_rows($queryCheck);
+
+                if ($jumlahCheck > 0) {
+                    ?>
+                    <div class="alert alert-warning mt-3" role="alert">
+                        Kategori Sudah ada
+                    </div>
+                    <?php
+                } else {
+                    $simpan = mysqli_query($con, "INSERT INTO kategori (nama) VALUES ('$kategori') ");
+                    if ($simpan) {
+                        ?>
+                        <div class="alert alert-success mt-3" role="alert">
+                            Kategori Berhasil disimpan
+                        </div>
+
+                        <meta http-equiv="refresh" content="0; url=kategori.php">
+                        <?php
+                    } else {
+                        echo mysqli_error($con);
+                    }
+                }
+            } ?>
         </div>
     </div>
 </body>

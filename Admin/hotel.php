@@ -46,12 +46,12 @@ function generateRandomString($length = 10)
                 <li class="breadcrumb-item active" aria-current="page"><a href="../Admin/"
                         class="no-decoration text-muted"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page"> <a href="../Admin/hotel.php"
-                        class="no-decoration text-muted">Hotel</a></li>
+                        class="no-decoration text-muted">Hotel atau Penginapan</a></li>
             </ol>
         </nav>
         <div class="text-center m-3">
-            <h2>List Hotel</h2>
-            <p class="text-muted">Berikut adalah daftar list hotel yang ada pada database anda</p>
+            <h2>List Hotel/Penginapan</h2>
+            <p class="text-muted">Berikut adalah daftar list Hotel/Penginapan yang ada pada database anda</p>
         </div>
         <div class="table-responsive mt-3">
             <table class=" table">
@@ -64,7 +64,6 @@ function generateRandomString($length = 10)
                         <th>Kordinat</th>
                         <th>Harga Terendah</th>
                         <th>Harga Tertinggi</th>
-                        <th>Deskripsi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -108,9 +107,6 @@ function generateRandomString($length = 10)
                                 </td>
                                 <td>
                                     <?php echo $data['harga_tertinggi']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $data['deskripsi']; ?>
                                 </td>
                                 <td>
                                     <a href="hotel-detail.php? id=<?php echo $data['id'] ?>" class="btn btn-info"><i

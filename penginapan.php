@@ -1,8 +1,8 @@
 <?php
 require "Connection/koneksi.php";
-$queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
+$querypenginapan = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='penginapan'");
 
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,15 +38,20 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
             <span>s</span>
             <span>t</span>
             <span class="space"> </span>
-            <span>H</span>
-            <span>o</span>
-            <span>t</span>
+            <span>P</span>
             <span>e</span>
-            <span>l</span>
+            <span>n</span>
+            <span>g</span>
+            <span>i</span>
+            <span>n</span>
+            <span>a</span>
+            <span>p</span>
+            <span>a</span>
+            <span>n</span>
         </h1>
         <div class="box-container">
             <?php
-            while ($data = mysqli_fetch_array($queryhotel)) {
+            while ($data = mysqli_fetch_array($querypenginapan)) {
                 ?>
                 <div class="box">
                     <img decoding="async" src="img/image/<?php echo $data['foto'] ?>" alt="">
@@ -58,23 +63,14 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
                             <?php echo $data['nama'] ?>
                         </h3>
                         <p>
-                            <?php echo $data['kordinat'] ?>
+                            <?php echo $data['deskripsi'] ?>
                         </p>
                         <div class="stars">
-                            <?php
-                            $id_hotel = $data['id'];
-                            $querystar = mysqli_query($con, "SELECT H.nama, K.nama AS nama_kategori, K.skor FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE H.id = '$id_hotel'");
-                            $star = mysqli_fetch_array($querystar);
-
-                            $rating = $star['skor'];
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($i <= $rating) {
-                                    echo '<i class="fas fa-star"></i>'; // Bintang penuh
-                                } else {
-                                    echo '<i class="far fa-star"></i>'; // Bintang kosong
-                                }
-                            }
-                            ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
                         </div>
                         <div class="price">
                             Rp.
@@ -85,14 +81,14 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
                         <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
                     </div>
                 </div>
-
             <?php } ?>
         </div>
     </section>
     <div>
         <?php require("footer.php") ?>
+        <script src=" js/index_active.js"></script>
     </div>
-    <script src=" js/index_active.js"></script>
+
 </body>
 
 </html>

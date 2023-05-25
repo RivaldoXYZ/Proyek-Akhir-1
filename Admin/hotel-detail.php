@@ -109,6 +109,11 @@ function generateRandomString($length = 10)
                         <?php echo $data['deskripsi']; ?>
                     </textarea>
                 </div>
+                <div>
+                    <label for="maps" class="mb-2 mt-2">Maps</label>
+                    <input name="maps" id="maps" cols="30" rows="10" class="form-control"
+                        value="<?php echo $data['maps']; ?>"></input>
+                </div>
                 <div class="mt-3">
                     <button class="btn btn-primary" type="submit" name="edit_hotel">Edit</button>
                     <button class="btn btn-danger" type="submit" name="hapus_hotel">Hapus</button>
@@ -123,7 +128,6 @@ function generateRandomString($length = 10)
                 $harga_terendah = htmlspecialchars($_POST['harga_terendah']);
                 $harga_tertinggi = htmlspecialchars($_POST['harga_tertinggi']);
                 $deskripsi = htmlspecialchars($_POST['deskripsi']);
-
                 $target_dir = "../img/image/";
                 $nama_file = basename($_FILES["foto"]["name"]);
                 $target_file = $target_dir . $nama_file;
@@ -131,6 +135,7 @@ function generateRandomString($length = 10)
                 $image_size = $_FILES["foto"]["size"];
                 $random_name = generateRandomString(20);
                 $name = $random_name . "." . $imageFileType;
+                $maps = htmlspecialchars($_POST['maps']);
                 if ($nama == '' || $kategori == '' || $alamat == '') {
                     ?>
                     <div class="alert alert-warning mt-3" role="alert">
@@ -138,7 +143,7 @@ function generateRandomString($length = 10)
                     </div>
                     <?php
                 } else {
-                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',harga_tertinggi='$harga_tertinggi', deskripsi='$deskripsi' WHERE id='$id'");
+                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',harga_tertinggi='$harga_tertinggi', deskripsi='$deskripsi', maps = '$maps' WHERE id='$id'");
 
                     if ($nama_file != '') {
                         if ($image_size > 500000000) {

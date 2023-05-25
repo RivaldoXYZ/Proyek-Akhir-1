@@ -7,11 +7,11 @@
             <div class="navbar-nav">
                 <a href="#">Home</a>
                 <a href="hotel.php">Hotel</a>
-                <a href="#penginapan">Penginapan</a>
-                <a href="#about">Tentang Kami</a>
+                <a href="penginapan.php">Penginapan</a>
+                <a href="about.php">Tentang Kami</a>
             </div>
             <div class="navbar-extra">
-                <a href="search.php" id="search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="hotel.php" id="search"><i class="fa-solid fa-magnifying-glass"></i></a>
                 <a href="#" id="hamburger-menu"><i class="fa-solid fa-bars"></i></a>
             </div>
         </div>

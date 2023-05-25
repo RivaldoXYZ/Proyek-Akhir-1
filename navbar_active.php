@@ -7,11 +7,21 @@
             <div class="navbar-nav">
                 <a href="index.php">Home</a>
                 <a href="hotel.php">Hotel</a>
-                <a href="#penginapan">Penginapan</a>
-                <a href="#about">Tentang Kami</a>
+                <a href="penginapan.php">Penginapan</a>
+                <a href="about.php">Tentang Kami</a>
             </div>
             <div class="navbar-extra">
-                <a href="#" id="search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <form action="search.php" method="get">
+                    <div class="search-box">
+                        <input type="text" name="keyword" id="searchInput" placeholder="Mau cari apa?">
+                        <div class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="cancel-icon">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </form>
                 <a href="#" id="hamburger-menu"><i class="fa-solid fa-bars"></i></a>
             </div>
         </div>

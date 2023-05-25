@@ -103,6 +103,10 @@ function generateRandomString($length = 10)
                     <label for="deskripsi" class="mb-2 mt-2">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
                 </div>
+                <div>
+                    <label for="maps" class="mb-2 mt-2">Maps</label>
+                    <input name="maps" id="maps" cols="30" rows="10" class="form-control"></input>
+                </div>
                 <div class="mt-3">
                     <button class="btn btn-primary" type="submit" name="simpan_hotel">Simpan</button>
                 </div>

@@ -13,7 +13,7 @@
                     <a class="nav-link me-4" href="kategori.php">Kategori</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-4" href="hotel.php">Hotel</a>
+                    <a class="nav-link me-4" href="hotel.php">Hotel/Penginapan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-4 " href="../index.php">Home User</a>

@@ -2,8 +2,15 @@
 require "Connection/koneksi.php";
 $id = $_GET['id'];
 $query = mysqli_query($con, "SELECT * FROM hotel WHERE id = '$id'");
+$querycomment = mysqli_query($con, "SELECT * FROM diskusi WHERE id_hotel = '$id'");
 $jumlah = mysqli_num_rows($query);
 $data = mysqli_fetch_array($query);
+$tanggalSekarang = date('Y-m-d');
+
+$querystar = mysqli_query($con, "SELECT H.nama, K.nama AS nama_kategori, K.skor FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE H.id = '$id'");
+$star = mysqli_fetch_array($querystar);
+
+$querykamar = mysqli_query($con, "SELECT * FROM kamar WHERE id_hotel = '$id'");
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +53,17 @@ $data = mysqli_fetch_array($query);
                     <?php echo $data['nama'] ?>
                 </h2>
                 <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <?php
+                    $rating = $star['skor'];
+                    // Ambil rating dari data ulasan
+                    for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $rating) {
+                            echo '<i class="fas fa-star"></i>'; // Bintang penuh
+                        } else {
+                            echo '<i class="far fa-star"></i>'; // Bintang kosong
+                        }
+                    }
+                    ?>
                 </div>
                 <p>
                     Alamat :
@@ -60,7 +73,6 @@ $data = mysqli_fetch_array($query);
                     Koordinat :
                     <?php echo $data['kordinat']; ?>
                 </p>
-
                 <p>
                     Harga :
                     Rp
@@ -73,10 +85,126 @@ $data = mysqli_fetch_array($query);
                     <?php echo $data['deskripsi']; ?>
                 </p>
             </div>
+
         </div>
+
         <div class="box">
             <h1>Maps</h1>
             <iframe class="maps" src=" <?php echo $data['maps']; ?>" frameborder="0"></iframe>
+        </div>
+        <div class="coment">
+            <h1 class="heading">
+                <h1>Halaman Q&A</h1>
+            </h1>
+            <!-- <form action="" method="post">
+                <label for="rating">Berikan Rating untuk tempat ini :
+                    <div class="rating">
+                        <input type="radio" id="star1" name="rating" value="1" onclick="setRating(1)" />
+                        <label for="star1"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2" onclick="setRating(2)" />
+                        <label for="star2"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3" onclick="setRating(3)" />
+                        <label for="star3"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4" onclick="setRating(4)" />
+                        <label for="star4"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star5" name="rating" value="5" onclick="setRating(5)" />
+                        <label for="star5"><i class="fas fa-star"></i></label>
+                    </div>
+                </label>
+                <script>
+                    let selectedRating = 0;
+
+                    function setRating(rating) {
+                        let stars = document.getElementsByClassName("rating")[0].getElementsByTagName("label");
+
+                        if (rating === selectedRating) {
+                            // Jika bintang yang sudah terisi diklik lagi, kosongkan rating
+                            selectedRating = 0;
+                        } else {
+                            selectedRating = rating;
+                        }
+
+                        for (let i = 0; i < stars.length; i++) {
+                            if (i < selectedRating) {
+                                stars[i].classList.add("filled");
+                            } else {
+                                stars[i].classList.remove("filled");
+                            }
+                        }
+                    }
+                </script>
+
+                <style>
+                    .rating {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .rating input[type="radio"] {
+                        display: none;
+                    }
+
+                    .rating label {
+                        color: #999;
+                        cursor: pointer;
+                        transition: color 0.2s;
+                    }
+
+                    .rating label.filled {
+                        color: #FFD700;
+                    }
+
+                    .rating i {
+                        font-size: 2rem;
+                        margin-top: 1rem;
+                    }
+                </style> -->
+            </form>
+            <div class="comment-section">
+                <h3>Komentar</h3>
+                <?php while ($comment = mysqli_fetch_array($querycomment)) {
+                    ?>
+                    <div class="comments">
+                        <div class="comment">
+                            <span class="comment-user"><i class="fa-solid fa-user fa-xl"></i>
+                                &nbsp;
+                                <?php echo $comment['nama'] ?>
+                            </span>
+                            <br>
+                            <span class="comment-content">
+                                <?php echo $comment['pesan'] ?>
+                            </span>
+                        </div>
+                        <!-- Tambahkan komentar tambahan di sini -->
+                    </div>
+                    <?php
+                } ?>
+            </div>
+
+            <?php
+            // Mengecek apakah ada parameter id yang dikirimkan melalui URL
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                ?>
+                <form class="custom-form" action="proses.php" method="post">
+                    <h3>Form Reviews</h3>
+                    <br>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="hidden" name="tanggal" value="<?php echo $tanggalSekarang; ?>">
+
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" required>
+                    <br>
+                    <br>
+                    <label for="pesan">Punya Pertanyaan ?</label>
+                    <textarea id="pesan" name="pesan" required></textarea>
+                    <button type="submit" name="submitpesan">Kirim Pesan</button>
+                </form>
+                <?php
+            } else {
+                echo "Hotel tidak ditemukan.";
+            }
+            ?>
         </div>
     </div>
     <div>

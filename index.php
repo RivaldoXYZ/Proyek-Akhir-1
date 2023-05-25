@@ -31,12 +31,10 @@ $querypenginapan = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_tere
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-
-</head>
-
 <body>
     <!-- Navbar Start-->
     <?php require('navbar.php') ?>
+
     <!-- Navbar End -->
 
     <!-- Hero Section -->
@@ -44,7 +42,6 @@ $querypenginapan = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_tere
         <main class="content">
             <h3>Welcome to A Toba icon of Luxury</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum, provident!</p>
-
         </main>
     </section>
     <!-- Service Section Start -->
@@ -128,8 +125,62 @@ $querypenginapan = mysqli_query($con, "SELECT id, nama, alamat, foto, harga_tere
                 </div>
             <?php } ?>
         </div>
-        <a href="hotel.php" class="more">See More</a>
+        <div class="more">
+            <a href="hotel.php"><i class="fa-solid fa-angles-down"></i>&nbsp; See More</a>
+        </div>
     </section>
+    <section class="packages" id="hotel">
+        <h1 class="heading">
+            <span>P</span>
+            <span>e</span>
+            <span>n</span>
+            <span>g</span>
+            <span>i</span>
+            <span>n</span>
+            <span>a</span>
+            <span>p</span>
+            <span>a</span>
+            <span>n</span>
+        </h1>
+        <div class="box-container">
+            <?php
+            while ($data = mysqli_fetch_array($queryhotel)) {
+                ?>
+                <div class="box">
+                    <img decoding="async" src="img/image/<?php echo $data['foto'] ?>" alt="">
+                    <div class="content">
+                        <p class="location"><i class="fas fa-map-marker-alt"></i>
+                            <?php echo $data['alamat'] ?>
+                        </p>
+                        <h3>
+                            <?php echo $data['nama'] ?>
+                        </h3>
+                        <p>
+                            <?php echo $data['deskripsi'] ?>
+                        </p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="price">
+                            Rp.
+                            <?php echo $data['harga_terendah'] ?> -
+                            Rp.
+                            <?php echo $data['harga_tertinggi'] ?>
+                        </div>
+                        <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="more">
+            <a href="penginapan.php"><i class="fa-solid fa-angles-down"></i>&nbsp; See More</a>
+        </div>
+    </section>
+
     <!-- <section class="review" id="review">
         <h1 class="heading">
             <span>r</span>

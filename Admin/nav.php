@@ -7,16 +7,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link me-4" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link me-4" aria-current="page" href="../index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-4" href="kategori.php">Kategori</a>
+                    <a class="nav-link me-4" href="../Kategori/kategori.php">Kategori</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-4" href="hotel.php">Hotel/Penginapan</a>
+                    <a class="nav-link me-4" href="../Hotel/hotel.php">Hotel/Penginapan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-4 " href="../index.php">Home User</a>
+                    <a class="nav-link me-4" href="../Kamar/kamar.php">Kamar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link me-4 " href="../../index.php">Home User</a>
                 </li>
             </ul>
             <ul class="navbar-nav justify-content-end ">

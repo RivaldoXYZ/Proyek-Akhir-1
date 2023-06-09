@@ -233,13 +233,13 @@ section {
 }
 
 
-.heading {
+.tittle .heading {
     text-align: center;
     padding: 2rem 0;
-    margin-bottom: 2rem;
+    margin-bottom: .5rem;
 }
 
-.heading span {
+.tittle .heading span {
     font-size: 1.5rem;
     background: rgba(135, 206, 235, 0.5);
     color: var(--color);
@@ -251,8 +251,14 @@ section {
     -o-border-radius: .5rem;
 }
 
-.heading .space {
+.tittle .heading .space {
     background: none;
+}
+
+.tittle p {
+    text-align: center;
+    padding: .5rem 0;
+    margin-bottom: 1rem;
 }
 
 .btn {
@@ -270,7 +276,8 @@ section {
 
 
 .services,
-.packages {
+.packages,
+.about-home {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 
@@ -313,6 +320,36 @@ section {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
 }
 
+
+/* Services */
+.about-home {
+    background-color: var(--biru);
+    margin-top: .1rem;
+}
+
+.about-home .box-container .box {
+    border-radius: .5rem;
+    padding: 2rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+.about-home .box-container .box h2 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.about-home .box-container .box p {
+    font-size: rem;
+    color: #000000;
+    padding: .5rem 0;
+}
+
+.about-home .box-container .box:hover {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+}
 
 
 /* Packages Style*/
@@ -360,8 +397,14 @@ section {
     padding: 1rem 0;
 }
 
+.packages .box-container .box .content .des p {
+    font-size: 1rem;
+    color: #666;
+    padding: .5rem 0;
+}
+
 .packages .box-container .box .content .stars i {
-    margin-top: 4rem;
+    margin-top: 2rem;
     font-size: 1rem;
     color: #F1C40F;
 }
@@ -514,9 +557,8 @@ section {
 }
 
 */
-
 /* Galeri Style*/
-.gallery .box-container {
+/* .gallery .box-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -643,7 +685,7 @@ section {
     height: 27rem;
     resize: none;
     width: 100%;
-}
+} */
 
 .brand-container {
     text-align: center;
@@ -685,7 +727,7 @@ section {
 
 .footer .box-container .box a:hover {
     color: var(--biru);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .footer .credit {
@@ -701,6 +743,7 @@ section {
 .footer .credit span {
     color: var(--orange);
 }
+
 
 /* Footer */
 footer {

@@ -13,11 +13,11 @@
         </div>
         <div class="box">
             <h3>quick links</h3>
-            <a href="#">Home</a>
-            <a href="#">Hotel</a>
-            <a href="#">Penginapan</a>
-            <a href="#">About Us</a>
-            <a href="#">Search</a>
+            <a href="index.php">Home</a>
+            <a href="hotel.php">Hotel</a>
+            <a href="penginapan.php">Penginapan</a>
+            <a href="about.php">About Us</a>
+            <a href="search.php">Search</a>
         </div>
 
     </div>

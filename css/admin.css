@@ -32,6 +32,11 @@ body {
     background-color: #00a138;
 }
 
+.summary-kamar {
+    border-radius: 15px;
+    background-color: #666666;
+}
+
 .no-decoration {
     text-decoration: none;
 }

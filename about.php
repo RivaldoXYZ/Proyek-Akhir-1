@@ -31,14 +31,24 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
     <!-- Navbar Start-->
     <?php require('navbar_active.php') ?>
     <!-- Navbar End -->
-    <div class="faq">
+    <div class="about-area">
+        <div class="container-about">
+            <div class="row-about">
+                <div class="about-img">
+                    <img src="img/foto3.jpg" alt="">
+                </div>
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur cum magni labore
+                        suscipit quod fugiat architecto quam a iste nulla mollitia voluptas nobis odio voluptatibus
+                        soluta dolor, ad dolores, ea numquam cumque! Distinctio ad hic nulla repellendus autem
+                        delectus fuga expedita maiores ea cum reiciendis praesentium at, dolor officiis porro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="faq">
         <div class="faq-container">
-            <h1 class="heading">
-                <span>F</span>
-                <span>A</span>
-                <span>Q</span>
-            </h1>
-
             <div class="faq-row">
                 <div class="faq-wrapper">
                     <div class="faq-header">
@@ -108,7 +118,7 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div>
         <?php require("footer.php") ?>
     </div>

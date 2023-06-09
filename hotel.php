@@ -32,18 +32,20 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
     <!-- Navbar End -->
 
     <section class="packages" id="hotel">
-        <h1 class="heading">
-            <span>L</span>
-            <span>i</span>
-            <span>s</span>
-            <span>t</span>
-            <span class="space"> </span>
-            <span>H</span>
-            <span>o</span>
-            <span>t</span>
-            <span>e</span>
-            <span>l</span>
-        </h1>
+        <div class="tittle">
+            <h1 class="heading">
+                <span>L</span>
+                <span>i</span>
+                <span>s</span>
+                <span>t</span>
+                <span class="space"> </span>
+                <span>H</span>
+                <span>o</span>
+                <span>t</span>
+                <span>e</span>
+                <span>l</span>
+            </h1>
+        </div>
         <div class="box-container">
             <?php
             while ($data = mysqli_fetch_array($queryhotel)) {
@@ -57,9 +59,16 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
                         <h3>
                             <?php echo $data['nama'] ?>
                         </h3>
-                        <p>
-                            <?php echo $data['kordinat'] ?>
-                        </p>
+                        <div class="des">
+                            <p>
+                                Koordinat : <br>
+                                <?php echo $data['kordinat'] ?>
+                            </p>
+                            <p>
+                                Alamat : <br>
+                                <?php echo $data['alamat'] ?>
+                            </p>
+                        </div>
                         <div class="stars">
                             <?php
                             $id_hotel = $data['id'];
@@ -82,7 +91,7 @@ $queryhotel = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='hotel'")
                             Rp.
                             <?php echo $data['harga_tertinggi'] ?>
                         </div>
-                        <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
+                        <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
                     </div>
                 </div>
 

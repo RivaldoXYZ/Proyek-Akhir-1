@@ -11,7 +11,7 @@ if (isset($_POST['submitpesan'])) {
         ?>
         <div class="alert alert-success mt-3" role="alert">
             Komentar Terkirim
-            <meta http-equiv="refresh" content="0; url=detail_hotel.php?id=<?php echo $id = $_POST['id']; ?>">
+            <meta http-equiv="refresh" content="0; url=detail.php?id=<?php echo $id = $_POST['id']; ?>">
         </div>
         <?php
     } else {

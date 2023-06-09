@@ -39,14 +39,16 @@ $jumlah = mysqli_num_rows($query);
 
     <!-- Navbar End -->
     <section class="packages" id="hotel">
-        <h1 class="heading">
-            <span>S</span>
-            <span>e</span>
-            <span>a</span>
-            <span>r</span>
-            <span>c</span>
-            <span>h</span>
-        </h1>
+        <div class="tittle">
+            <h1 class="heading">
+                <span>S</span>
+                <span>e</span>
+                <span>a</span>
+                <span>r</span>
+                <span>c</span>
+                <span>h</span>
+            </h1>
+        </div>
         <div class="box-container">
             <?php
             if ($jumlah == 0) {
@@ -85,7 +87,7 @@ $jumlah = mysqli_num_rows($query);
                                 Rp.
                                 <?php echo $data['harga_tertinggi'] ?>
                             </div>
-                            <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
+                            <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
                         </div>
                     </div>
                     <?php

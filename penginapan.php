@@ -32,23 +32,25 @@ $querypenginapan = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='peng
     <!-- Navbar End -->
 
     <section class="packages" id="hotel">
-        <h1 class="heading">
-            <span>L</span>
-            <span>i</span>
-            <span>s</span>
-            <span>t</span>
-            <span class="space"> </span>
-            <span>P</span>
-            <span>e</span>
-            <span>n</span>
-            <span>g</span>
-            <span>i</span>
-            <span>n</span>
-            <span>a</span>
-            <span>p</span>
-            <span>a</span>
-            <span>n</span>
-        </h1>
+        <div class="tittle">
+            <h1 class="heading">
+                <span>L</span>
+                <span>i</span>
+                <span>s</span>
+                <span>t</span>
+                <span class="space"> </span>
+                <span>P</span>
+                <span>e</span>
+                <span>n</span>
+                <span>g</span>
+                <span>i</span>
+                <span>n</span>
+                <span>a</span>
+                <span>p</span>
+                <span>a</span>
+                <span>n</span>
+            </h1>
+        </div>
         <div class="box-container">
             <?php
             while ($data = mysqli_fetch_array($querypenginapan)) {
@@ -62,15 +64,31 @@ $querypenginapan = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='peng
                         <h3>
                             <?php echo $data['nama'] ?>
                         </h3>
-                        <p>
-                            <?php echo $data['deskripsi'] ?>
-                        </p>
+                        <div class="des">
+                            <p>
+                                Koordinat : <br>
+                                <?php echo $data['kordinat'] ?>
+                            </p>
+                            <p>
+                                Alamat : <br>
+                                <?php echo $data['alamat'] ?>
+                            </p>
+                        </div>
                         <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                            <?php
+                            $id_hotel = $data['id'];
+                            $querystar = mysqli_query($con, "SELECT H.nama, K.nama AS nama_kategori, K.skor FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE H.id = '$id_hotel'");
+                            $star = mysqli_fetch_array($querystar);
+
+                            $rating = $star['skor'];
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= $rating) {
+                                    echo '<i class="fas fa-star"></i>'; // Bintang penuh
+                                } else {
+                                    echo '<i class="far fa-star"></i>'; // Bintang kosong
+                                }
+                            }
+                            ?>
                         </div>
                         <div class="price">
                             Rp.
@@ -78,9 +96,10 @@ $querypenginapan = mysqli_query($con, "SELECT * FROM hotel WHERE akomodasi='peng
                             Rp.
                             <?php echo $data['harga_tertinggi'] ?>
                         </div>
-                        <a href="detail_hotel.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
+                        <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
                     </div>
                 </div>
+
             <?php } ?>
         </div>
     </section>

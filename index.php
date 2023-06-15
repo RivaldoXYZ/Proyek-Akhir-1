@@ -1,8 +1,8 @@
 <?php
 require "Connection/koneksi.php";
 
-$queryhotel = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE akomodasi='hotel' AND SKOR>=3 LIMIT 6");
-$querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE akomodasi='penginapan' AND SKOR>=3 LIMIT 6");
+$queryhotel = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE akomodasi='hotel' ORDER BY K.skor DESC LIMIT 8");
+$querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE akomodasi='penginapan' ORDER BY K.skor DESC LIMIT 8");
 
 ?>
 
@@ -41,8 +41,9 @@ $querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <main class="content">
-            <h3>Welcome to A Toba icon of Luxury</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum, provident!</p>
+            <h3>Welcome to Website TobaGateway</h3>
+            <p>Tobagateway adalah platform informasi terpercaya yang didedikasikan untuk memberikan informasi lengkap
+                mengenai hotel dan penginapan di Toba</p>
         </main>
     </section>
     <!-- Service Section Start -->
@@ -64,23 +65,24 @@ $querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM 
             <div class="box">
                 <i class="fa-solid fa-stamp"></i>
                 <h3>Informasi Terpercaya</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+                <p>Kami di Tobagateway memahami betapa pentingnya memiliki sumber informasi yang dapat dipercaya dalam
+                    memilih hotel atau penginapan di Toba. Itulah mengapa kami berkomitmen untuk menyediakan informasi
+                    yang akurat dan terpercaya kepada Anda.</p>
             </div>
             <div class="box">
                 <i class="fa-solid fa-book"></i>
                 <h3>Informasi Akurat</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+                <p>Di Tobagateway, kami mengutamakan keakuratan informasi yang kami berikan kepada Anda. Kami memahami
+                    bahwa dalam mencari penginapan di Toba, Anda membutuhkan data yang dapat diandalkan dan akurat.
+                </p>
             </div>
             <div class="box">
                 <i class="fa-solid fa-handshake-angle"></i>
                 <h3>Dapat Menjadi Panduan</h3>
-                <p>Lorem Ipsum is simply dummy text of the farhan and typesetting industry.
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry
-                    Lorem Ipsum is simply dummy text of the farhan and typesetting industry</p>
+                <p>Dalam perjalanan Anda, kami akan menjadi mitra yang dapat diandalkan. Kami menyediakan informasi
+                    terpercaya tentang berbagai hotel dan penginapan di Toba, termasuk fasilitas, layanan, dan lokasi
+                    yang ditawarkan. Dengan panduan kami, Anda dapat memperoleh wawasan yang lebih baik tentang
+                    pilihan-pilihan yang tersedia dan membuat keputusan yang tepat.</p>
             </div>
         </div>
     </section>
@@ -123,54 +125,47 @@ $querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM 
                 <span>e</span>
                 <span>l</span>
             </h1>
-            <p>Berikut adalah List Hotel Terbaik di sekitar Toba Dengan skor Bitang 4 sampai Bintang 5</p>
+            <p>Berikut adalah List Hotel Terbaik di sekitar Toba Dengan rating bintang Tertinggi</p>
         </div>
         <div class="box-container">
 
             <?php
             while ($data = mysqli_fetch_array($queryhotel)) {
                 ?>
-
                 <div class="box">
                     <img decoding="async" src="img/image/<?php echo $data['foto'] ?>" alt="">
                     <div class="content">
                         <p class="location"><i class="fas fa-map-marker-alt"></i>
-                            <?php echo $data['alamat'] ?>
+                            <?php echo $data['kabupaten'] ?>
                         </p>
                         <h3>
                             <?php echo $data['nama'] ?>
                         </h3>
-                        <div class="des">
-                            <p>
-                                Koordinat : <br>
-                                <?php echo $data['kordinat'] ?>
-                            </p>
+                        <!-- <div class="des">
                             <p>
                                 Alamat : <br>
                                 <?php echo $data['alamat'] ?>
                             </p>
-                        </div>
+                        </div> -->
                         <div class="stars">
                             <?php
                             $id_hotel = $data['id'];
                             $querystar = mysqli_query($con, "SELECT H.nama, K.nama AS nama_kategori, K.skor FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE H.id = '$id_hotel'");
                             $star = mysqli_fetch_array($querystar);
-
                             $rating = $star['skor'];
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= $rating) {
                                     echo '<i class="fas fa-star"></i>'; // Bintang penuh
                                 } else {
-                                    echo '<i class="far fa-star"></i>'; // Bintang kosong
+                                    // echo '<i class="far fa-star"></i>'; // Bintang kosong
                                 }
                             }
                             ?>
                         </div>
                         <div class="price">
-                            Rp.
-                            <?php echo $data['harga_terendah'] ?> -
-                            Rp.
-                            <?php echo $data['harga_tertinggi'] ?>
+                            <p>IDR
+                                <?php echo $data['harga_terendah'] ?>
+                            </p>
                         </div>
                         <a href="detail.php?id=<?php echo $data['id'] ?>" class="btn">Detail</a>
                     </div>
@@ -195,7 +190,7 @@ $querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM 
                 <span>a</span>
                 <span>n</span>
             </h1>
-            <p>Berikut adalah List Penginapan Terbaik di sekitar Toba Dengan skor Bitang 4 sampai Bintang 5</p>
+            <p>Berikut adalah List Penginapan Terbaik di sekitar Toba Dengan skor Bitang Tertinggi</p>
         </div>
         <div class="box-container">
             <?php
@@ -205,42 +200,36 @@ $querypenginapan = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM 
                     <img decoding="async" src="img/image/<?php echo $penginapan['foto'] ?>" alt="">
                     <div class="content">
                         <p class="location"><i class="fas fa-map-marker-alt"></i>
-                            <?php echo $penginapan['alamat'] ?>
+                            <?php echo $penginapan['kabupaten'] ?>
                         </p>
                         <h3>
                             <?php echo $penginapan['nama'] ?>
                         </h3>
-                        <div class="des">
-                            <p>
-                                Koordinat : <br>
-                                <?php echo $penginapan['kordinat'] ?>
-                            </p>
+                        <!-- <div class="des">
                             <p>
                                 Alamat : <br>
                                 <?php echo $penginapan['alamat'] ?>
                             </p>
-                        </div>
+                        </div> -->
                         <div class="stars">
                             <?php
                             $id_hotel = $penginapan['id'];
                             $querystar = mysqli_query($con, "SELECT H.nama, K.nama AS nama_kategori, K.skor FROM hotel H JOIN kategori K ON H.kategori_id=K.id WHERE H.id = '$id_hotel'");
                             $star = mysqli_fetch_array($querystar);
-
                             $rating = $star['skor'];
                             for ($i = 1; $i <= 5; $i++) {
                                 if ($i <= $rating) {
                                     echo '<i class="fas fa-star"></i>'; // Bintang penuh
                                 } else {
-                                    echo '<i class="far fa-star"></i>'; // Bintang kosong
+                                    // echo '<i class="far fa-star"></i>'; // Bintang kosong
                                 }
                             }
                             ?>
                         </div>
                         <div class="price">
-                            Rp.
-                            <?php echo $penginapan['harga_terendah'] ?> -
-                            Rp.
-                            <?php echo $penginapan['harga_tertinggi'] ?>
+                            <p>IDR
+                                <?php echo $penginapan['harga_terendah'] ?>
+                            </p>
                         </div>
                         <a href="detail.php?id=<?php echo $penginapan['id'] ?>" class="btn">Detail</a>
                     </div>

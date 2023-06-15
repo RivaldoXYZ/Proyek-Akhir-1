@@ -98,3 +98,14 @@ window.addEventListener('load', function () {
         window.onbeforeunload = null;
     });
 });
+
+const starFilterSelect = document.getElementById('star-filter');
+
+starFilterSelect.addEventListener('change', function () {
+    const selectedValue = this.value;
+
+    // Mengarahkan ke URL dengan parameter filter yang sesuai
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('star-filter', selectedValue);
+    window.location.href = currentUrl.toString();
+});

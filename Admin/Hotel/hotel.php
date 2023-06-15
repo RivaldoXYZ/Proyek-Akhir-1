@@ -2,7 +2,7 @@
 require "../session.php";
 require "../../Connection/koneksi.php";
 
-$queryhotel = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id ");
+$queryhotel = mysqli_query($con, "SELECT H.*, K.nama AS nama_kategori FROM hotel H JOIN kategori K ON H.kategori_id=K.id ORDER BY akomodasi");
 $jumlah = mysqli_num_rows($queryhotel);
 
 $querykategory = mysqli_query($con, "SELECT * FROM kategori");
@@ -70,9 +70,9 @@ function generateRandomString($length = 10)
                         <th>Nama </th>
                         <th>Kategori</th>
                         <th>Alamat</th>
-                        <th>Kordinat</th>
                         <th>Harga Terendah</th>
-                        <th>Harga Tertinggi</th>
+                        <th>Kabupaten</th>
+                        <th>Akomodasi</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -109,13 +109,13 @@ function generateRandomString($length = 10)
                                     <?php echo $data['alamat']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $data['kordinat']; ?>
-                                </td>
-                                <td>
                                     <?php echo $data['harga_terendah']; ?>
                                 </td>
                                 <td>
-                                    <?php echo $data['harga_tertinggi']; ?>
+                                    <?php echo $data['kabupaten']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $data['akomodasi']; ?>
                                 </td>
                                 <td>
                                     <a href="hotel-detail.php?id=<?php echo $data['id'] ?>" class="btn btn-info"><i

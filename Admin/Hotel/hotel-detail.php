@@ -84,9 +84,9 @@ function generateRandomString($length = 10)
                         value="<?php echo $data['harga_terendah']; ?>" class="form-control" autocomplete="off">
                 </div>
                 <div>
-                    <label for="harga_tertinggi" class="mb-2 mt-2">Harga Tertinggi</label>
-                    <input type="text" name="harga_tertinggi" id="harga_tertinggi"
-                        value="<?php echo $data['harga_tertinggi']; ?>" class="form-control" autocomplete="off">
+                    <label for="kabupaten" class="mb-2 mt-2">kabupaten</label>
+                    <input type="text" name="kabupaten" id="kabupaten" value="<?php echo $data['kabupaten']; ?>"
+                        class="form-control" autocomplete="off">
                 </div>
                 <div>
                     <label for="deskripsi" class="mb-2 mt-2">Deskripsi</label>
@@ -128,7 +128,7 @@ function generateRandomString($length = 10)
                 $alamat = htmlspecialchars($_POST['alamat']);
                 $kordinat = htmlspecialchars($_POST['kordinat']);
                 $harga_terendah = htmlspecialchars($_POST['harga_terendah']);
-                $harga_tertinggi = htmlspecialchars($_POST['harga_tertinggi']);
+                $kabupaten = htmlspecialchars($_POST['kabupaten']);
                 $deskripsi = htmlspecialchars($_POST['deskripsi']);
                 $akomodasi = htmlspecialchars($_POST['akomodasi']);
                 $fasilitas = htmlspecialchars($_POST['fasilitas']);
@@ -169,7 +169,7 @@ function generateRandomString($length = 10)
                     </div>
                     <?php
                 } else {
-                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',harga_tertinggi='$harga_tertinggi', deskripsi='$deskripsi', akomodasi= '$akomodasi', fasilitas='$fasilitas' WHERE id='$id'");
+                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',kabupaten='$kabupaten', deskripsi='$deskripsi', akomodasi= '$akomodasi', fasilitas='$fasilitas' WHERE id='$id'");
 
                     if ($nama_file != '') {
                         if ($image_size > 500000000) {

@@ -92,7 +92,7 @@
     transform: translateY(-50%);
     height: 3rem;
     width: 3rem;
-    background: #929292;
+    background: none;
     border-radius: 50%;
     text-align: center;
     line-height: 3rem;
@@ -110,8 +110,7 @@
     line-height: 2.5rem;
     width: 2.5rem;
     font-size: 1.5rem;
-    background: #000000;
-    color: #fff;
+    background: none;
     transform: translateY(-50%) rotate(360deg);
 }
 
@@ -153,6 +152,16 @@
     padding: 0;
 }
 
+.box .nav-footer {
+    display: flex;
+
+}
+
+.box .nav-footer a {
+    flex: 0 0 20%;
+
+}
+
 .coment {
     margin: 0;
     padding: 0;
@@ -169,26 +178,55 @@
 }
 
 .detail .row {
-    display: flex;
+
     padding: 2rem;
 }
 
 .rows {
     padding: 2rem;
     border-bottom: 1px solid;
-
 }
 
 .rows .deskripsi p {
     font-size: 1.1rem;
     color: #666;
-    padding-left: 2rem;
     line-height: 1.7rem;
 
 }
 
-.detail .row .detail-img {
-    flex: 1 1 65rem;
+.image-grid {
+    --gap: 16px;
+    --num-cols: 4;
+    --row-height: 20rem;
+    box-sizing: border-box;
+    padding: var(--gap);
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
+}
+
+.image-grid>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.image-grid-col-2 {
+    grid-column: span 3;
+}
+
+.image-grid-row-2 {
+    grid-row: span 2;
+}
+
+/* Anything udner 1024px */
+@media screen and (max-width: 1024px) {
+    .image-grid {
+        --num-cols: 2;
+        --row-height: 200px;
+    }
 }
 
 .detail .row .detail-img img {
@@ -196,43 +234,106 @@
     background-size: cover;
 }
 
-.detail .row .content {
-    flex: 1 1 70rem;
-    padding: 0 1rem;
+.detail .rows section {
+    padding: 0;
 }
 
-.detail .row .content h2 {
+
+.detail .rows .content {
+    flex: 1 1 70rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid;
+}
+
+.detail .row h2 {
     font-size: 2rem;
 }
 
-.detail .row .content p {
+.detail .rows .content .row p {
     font-size: 1rem;
     color: #666;
-    padding: .5rem 0;
+}
+
+.detail .rows .nav-section {
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
 }
 
 
+.detail .rows .nav-section a {
+    margin: 0 1rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+    transition: color 0.2s ease-in-out;
 
-.detail .rows .deskripsi {
+}
+
+.detail .rows .nav-section a:hover {
+    color: var(--bg6);
+
+}
+
+
+.detail .rows .nav-section a::after {
+    content: '';
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 0.1rem solid #000000;
+    transform: scaleX(0);
+    transition: 0.3s linear;
+}
+
+.detail .rows .content .row .nama {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.detail .rows .content .row .alamat {
+    margin-top: -2rem;
+}
+
+.detail .rows .content .row .price {
+    text-align: center;
+    margin-top: -1rem;
+    font-weight: 500;
+}
+
+.detail .rows .content .row .nama h2 {
+    flex: 0 0 80%;
+
+}
+
+.detail .rows .content .row .price p {
+    font-size: 2rem;
+}
+
+
+.detail .rows .deskripsi p {
+    text-align: justify;
     font-size: 1rem;
     color: #666;
-    padding: .5rem 0;
 }
+
 
 .detail .rows .deskripsi li {
     margin-left: 3rem;
 }
 
-.detail .row .content li {
+.detail .row li {
     font-size: 1rem;
     color: #666;
 }
 
-.detail .row .content .stars i {
-    margin: 1rem 0;
+.detail .row .stars i {
     font-size: 1.2rem;
     color: #F1C40F;
 }
+
 
 .box {
     padding: 1rem;
@@ -253,20 +354,21 @@
     margin-bottom: 5rem;
 }
 
+
 .data-fasility-tittle {
-    margin-left: 2rem;
+    margin-top: 2rem;
 }
 
 .data-fasility {
     display: flex;
     flex-wrap: wrap;
-    padding-left: 2rem;
     margin-bottom: 2rem;
 }
 
 .data-fasility div {
+    padding-left: 2rem;
     justify-content: flex-start;
-    flex: 0 0 20%;
+    flex: 0 0 25%;
     color: #666;
 
 }
@@ -275,61 +377,38 @@
     font-size: .8rem;
 }
 
-.row-kamar {
-    margin-top: 2.5rem;
-    border-bottom: 1px solid;
-}
-
-.row-kamar .kamar {
-    margin-bottom: 3rem;
-}
-
-.fa-circle-chevron-down {
-    font-size: 1rem;
-    padding: 1rem;
-}
-
-.row-kamar .kamar .fasilitas p {
-    font-size: 1.2rem;
-    padding: 1rem;
-}
-
-.row-kamar .kamar .fasilitas .data {
-    color: #666;
-    padding: .5rem 1.5rem;
-}
-
-
-.row-kamar .kamar .fasilitas .data ul {
-    display: flex;
-    justify-content: flex-start;
-    margin: 0 3rem;
-}
-
-.row-kamar .kamar .fasilitas .data ul li {
-    flex: 0 0 40%;
-}
-
-.row-kamar .kamar .fasilitas .data .list i {
-    font-size: 1rem;
-}
-
-.row-kamar .kamar .fasilitas .price h3 {
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
-
-}
-
-.row-kamar .kamar h1 {
-    font-size: 2.5rem;
+.pagination {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
     text-align: center;
 }
 
-.row-kamar .kamar li,
-p {
-    font-size: 1.2rem;
-    line-height: 2rem;
-    color: #666;
+.pagination a {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #ddd;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+.pagination a:first-child {
+    margin-left: 0;
+}
+
+.pagination a:last-child {
+    margin-right: 0;
 }
 
 /* Faq .faq {
@@ -444,6 +523,7 @@ p {
 
 .about-text {
     padding: 1rem;
+
     flex: 0 0 55%;
 }
 
@@ -456,6 +536,7 @@ p {
 .about-text p {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1rem;
+    line-height: 1.5rem;
     color: black;
 }
 

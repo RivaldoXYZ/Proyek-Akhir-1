@@ -54,197 +54,164 @@ $count = mysqli_num_rows($querycomment);
     <!-- Navbar End -->
     <div class="detail" id="detail">
         <div class="rows">
-            <div class="row">
-                <div class="detail-img">
-                    <img src="img/image/<?php echo $data['foto']; ?>" alt="">
-                </div>
+
+            <div class="image-grid">
+                <img class="image-grid-col-2 image-grid-row-2" src="img/image/<?php echo $data['foto']; ?>" alt="">
+                <img src="img/image/<?php echo $data['foto1']; ?>" alt="">
+                <img src="img/image/<?php echo $data['foto2']; ?>" alt="">
+            </div>
+            <div class="nav-section">
+                <a href="#info">Info Umum</a>
+                <a href="#fasilitas">Fasilitas dan Deskripsi</a>
+                <a href="#maps">Maps</a>
+                <a href="#form">QnA</a>
+            </div>
+            <section id="info">
                 <div class="content">
-                    <h2>
-                        <?php echo $data['nama'] ?>
-                    </h2>
-                    <div class="stars">
-                        <?php
-                        $rating = $star['skor'];
-                        // Ambil rating dari data ulasan
-                        for ($i = 1; $i <= 5; $i++) {
-                            if ($i <= $rating) {
-                                echo '<i class="fas fa-star"></i>'; // Bintang penuh
-                            } else {
-                                echo '<i class="far fa-star"></i>'; // Bintang kosong
+                    <div class="row">
+                        <div class="stars">
+                            <?php
+                            $rating = $star['skor'];
+                            // Ambil rating dari data ulasan
+                            for ($i = 1; $i <= 5; $i++) {
+                                if ($i <= $rating) {
+                                    echo '<i class="fas fa-star"></i>'; // Bintang penuh
+                                } else {
+                                    // echo '<i class="far fa-star"></i>'; // Bintang kosong
+                                }
                             }
-                        }
-                        ?>
-                    </div>
-                    <p>
-                        Alamat :
-                        <?php echo $data['alamat']; ?>
-                    </p>
-                    <p>
-                        Koordinat :
-                        <?php echo $data['kordinat']; ?>
-                    </p>
-                    <p>
-                        Harga :
-                        Rp
-                        <?php echo $data['harga_terendah']; ?> -
-                        Rp
-                        <?php echo $data['harga_tertinggi']; ?>
-                    </p>
-                </div>
-
-            </div>
-            <p class="data-fasility-tittle">Fasilitas Yang Tersedia : <br></p>
-            <div class="data-fasility">
-                <?php
-                $fasility = explode(",", $data['fasilitas']);
-                foreach ($fasility as $key => $listfasilitas) {
-                    ?>
-                    <div>
-                        <i class="fa-solid fa-circle-check"></i>
-                        <?php echo $listfasilitas; ?>
-                    </div>
-                    <?php
-                }
-                ?>
-            </div>
-            <div class="deskripsi">
-                <p>Deskripsi :</p>
-                <?php
-                $decodedText = html_entity_decode($data['deskripsi']);
-                echo $decodedText; ?>
-            </div>
-        </div>
-        <?php if ($countkamar > 0) {
-            ?>
-            <div class="row-kamar">
-                <div class="kamar">
-                    <h1>Kamar dan Fasilitas</h1>
-                    <br>
-
-                    <p>Tipe Kamar dan Fasilitas yang Tersedia :</p>
-                    <div class="fasilitas">
-                        <?php while ($kamar = mysqli_fetch_array($querykamar)) { ?>
-                            <div class="item">
-                                <h4>
-                                    <i class="fa-solid fa-circle-chevron-down"></i>
-                                    <?php echo $kamar['tipe_kamar']; ?>
-                                </h4>
-                                <div class="data">
-                                    <?php $decodedText = html_entity_decode($kamar['fasilitas_kamar']);
-                                    echo $decodedText; ?>
-
-                                    <!-- <?php $items = explode("\r\n", $kamar['fasilitas_kamar']);
-                                    $previous_item = ''; ?>
-                                    <?php
-                                    foreach ($items as $item) {
-                                        $previous_item = $item;
-                                        $hobi = explode(",", $item);
-                                        echo "</pre>";
-                                        foreach ($hobi as $key => $item) {
-                                            echo "<div>";
-                                            echo "$item<br/>";
-                                            echo "</div>";
-                                        }
-                                    }
-                                    ?> -->
-                                </div>
-                                <div class="price">
-                                    <h3>
-                                        Rp.
-                                        <?php echo $kamar['harga_kamar']; ?>
-                                    </h3>
-                                </div>
+                            ?>
+                        </div>
+                        <div class="nama">
+                            <h2>
+                                <?php echo $data['nama'] ?>
+                            </h2>
+                            <div class="price">
+                                Mulai Dari
+                                <p>
+                                    IDR
+                                    <?php echo $data['harga_terendah'] ?>
+                                </p>
+                                /Kamar/Malam
                             </div>
-                            <br>
-                        <?php } ?>
+                        </div>
+                        <p class="alamat">
+                            Alamat :
+                            <?php echo $data['alamat']; ?>
+                        </p>
                     </div>
                 </div>
-                <?php
-
-        } else {
-        } ?>
-
-            <div class="rows">
+            </section>
+            <section id="fasilitas">
+                <p class="data-fasility-tittle">Fasilitas Yang Tersedia : <br></p>
+                <div class="data-fasility">
+                    <?php
+                    $fasility = explode(",", $data['fasilitas']);
+                    foreach ($fasility as $key => $listfasilitas) {
+                        ?>
+                        <div>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <?php echo $listfasilitas; ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+                <div class="deskripsi">
+                    <p class="data-fasility-tittle">Deskripsi :</p>
+                    <p class="det">
+                        <?php
+                        $decodedText = html_entity_decode($data['deskripsi']);
+                        echo $decodedText; ?>
+                    </p>
+                </div>
+            </section>
+        </div>
+        <div class="rows">
+            <section id="maps">
                 <div class="box-maps">
                     <h1>Maps</h1>
                     <iframe class="maps"
                         src="https://maps.google.com/maps?q=<?php echo $data['kordinat'] ?> &t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
-            </div>
-
-            <div class="coment">
-            </div>
-            <div class="coment">
-                <h1 class="heading">
-                    <h1>Halaman Q&A</h1>
-                </h1>
-                </form>
-
-                <?php
-                // Mengecek apakah ada parameter id yang dikirimkan melalui URL
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                    ?>
-                    <form class="custom-form" action="proses.php" method="post">
-                        <h3>Form Reviews</h3>
-                        <br>
-                        <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="hidden" name="tanggal" value="<?php echo $tanggalSekarang; ?>">
-
-                        <label for="nama">Nama:</label>
-                        <input type="text" id="nama" name="nama" required>
-                        <br>
-                        <br>
-                        <label for="pesan">Punya Pertanyaan ?</label>
-                        <textarea id="pesan" name="pesan" required></textarea>
-                        <button type="submit" name="submitpesan">Kirim Pesan</button>
+            </section>
+        </div>
+        <div class="rows">
+            <section id="form">
+                <div class="coment">
+                    <h1 class="heading">
+                        <h1>Form Q&A</h1>
+                    </h1>
                     </form>
+
                     <?php
-                }
-                ?>
-                <div class="comment-section">
-                    <div>
-                        <h3>All Komentar</h3>
-                    </div>
-                    <div class="count">
+                    // Mengecek apakah ada parameter id yang dikirimkan melalui URL
+                    if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        ?>
+                        <form class="custom-form" action="proses.php" method="post">
+                            <h3>Form Reviews</h3>
+                            <br>
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="tanggal" value="<?php echo $tanggalSekarang; ?>">
+
+                            <label for="nama">Nama:</label>
+                            <input type="text" id="nama" name="nama" required>
+                            <br>
+                            <br>
+                            <label for="pesan">Punya Pertanyaan ?</label>
+                            <textarea id="pesan" name="pesan" required></textarea>
+                            <button type="submit" name="submitpesan">Kirim Pesan</button>
+                        </form>
                         <?php
-                        if ($count > 0) {
+                    }
+                    ?>
+                    <div class="comment-section">
+                        <div>
+                            <h3>All Komentar</h3>
+                        </div>
+                        <div class="count">
+                            <?php
+                            if ($count > 0) {
+                                ?>
+                                <div id="comment-count">
+                                    <span id="count-number">
+                                        <?php echo $count; ?>
+                                    </span> Comment(s)
+                                </div>
+                                <?php
+                            } ?>
+                        </div>
+                        <?php while ($comment = mysqli_fetch_array($querycomment)) {
                             ?>
-                            <div id="comment-count">
-                                <span id="count-number">
-                                    <?php echo $count; ?>
-                                </span> Comment(s)
+                            <div class="comments">
+                                <div class="comment">
+                                    <div class="user">
+                                        <span class="comment-user"><i class="fa-solid fa-user fa-xl"></i>
+                                            &nbsp;
+                                            <?php echo $comment['nama'] ?>
+                                        </span>
+                                        <p>
+                                            <?php echo $comment['tanggal'] ?>
+                                        </p>
+                                    </div>
+                                    <span class="comment-content">
+                                        <?php echo $comment['pesan'] ?>
+                                    </span>
+                                </div>
                             </div>
                             <?php
                         } ?>
                     </div>
-                    <?php while ($comment = mysqli_fetch_array($querycomment)) {
-                        ?>
-                        <div class="comments">
-                            <div class="comment">
-                                <div class="user">
-                                    <span class="comment-user"><i class="fa-solid fa-user fa-xl"></i>
-                                        &nbsp;
-                                        <?php echo $comment['nama'] ?>
-                                    </span>
-                                    <p>
-                                        <?php echo $comment['tanggal'] ?>
-                                    </p>
-                                </div>
-                                <span class="comment-content">
-                                    <?php echo $comment['pesan'] ?>
-                                </span>
-                            </div>
-                        </div>
-                        <?php
-                    } ?>
                 </div>
-            </div>
+            </section>
         </div>
-        <div>
-            <?php require("footer.php") ?>
-            <script src=" js/index_active.js"></script>
-        </div>
+    </div>
+    <div>
+        <?php require("footer.php") ?>
+        <script src=" js/index_active.js"></script>
+    </div>
+
 
 </body>
 

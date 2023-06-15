@@ -9,8 +9,6 @@ $jumlahkategori = mysqli_num_rows($querykategori);
 $queryhotel = mysqli_query($con, "SELECT * FROM hotel");
 $jumlahhotel = mysqli_num_rows($queryhotel);
 
-$querykamar = mysqli_query($con, "SELECT * FROM kamar");
-$jumlahkamar = mysqli_num_rows($querykamar);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,22 +71,6 @@ $jumlahkamar = mysqli_num_rows($querykamar);
                                 <?php echo $jumlahhotel . " " ?> Hotel
                             </p>
                             <p><a href="Hotel/hotel.php" class="text-white no-decoration">Lihat Detail</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="summary-kamar p-3">
-                    <div class="row">
-                        <div class="col-6">
-                            <i class="fa-solid fa-hotel fa-5x"></i>
-                        </div>
-                        <div class="col-6 text-white">
-                            <h3 class="fs-2">Kamar</h3>
-                            <p class="fs-4">
-                                <?php echo $jumlahkamar . " " ?> Kamar
-                            </p>
-                            <p><a href="Kamar/kamar.php" class="text-white no-decoration">Lihat Detail</a></p>
                         </div>
                     </div>
                 </div>

@@ -15,9 +15,7 @@
                 <li class="nav-item">
                     <a class="nav-link me-4" href="Hotel/hotel.php">Hotel/Penginapan</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link me-4" href="Kamar/kamar.php">Kamar</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link me-4 " href="../index.php">Home User</a>
                 </li>

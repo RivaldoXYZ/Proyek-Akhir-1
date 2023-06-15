@@ -74,18 +74,25 @@ function generateRandomString($length = 10)
                         class="form-control" autocomplete="off">
                 </div>
                 <div>
-                    <label for="foto" class="mb-2 mt-2">Foto</label>
+                    <label for="foto" class="mb-2 mt-2">Foto 1</label>
                     <input type="file" name="foto" id="foto" class="form-control">
                 </div>
                 <div>
-                    <label for="harga_tertinggi" class="mb-2 mt-2">Harga Terendah</label>
+                    <label for="foto1" class="mb-2 mt-2">Foto 2</label>
+                    <input type="file" name="foto1" id="foto1" class="form-control">
+                </div>
+                <div>
+                    <label for="foto2" class="mb-2 mt-2">Foto 3</label>
+                    <input type="file" name="foto2" id="foto2" class="form-control">
+                </div>
+                <div>
+                    <label for="kabupaten" class="mb-2 mt-2">Harga Terendah</label>
                     <input type="text" name="harga_terendah" id="harga_terendah" class="form-control"
                         pattern="\d+(\.\d{3})?">
                 </div>
                 <div>
-                    <label for="harga_tertinggi" class="mb-2 mt-2">Harga Tertinggi</label>
-                    <input type="text" name="harga_tertinggi" id="harga_tertinggi" class="form-control"
-                        pattern="\d+(\.\d{3})?">
+                    <label for="kabupaten" class="mb-2 mt-2">Kabupaten</label>
+                    <input type="text" name="kabupaten" id="kabupaten" class="form-control" pattern="\d+(\.\d{3})?">
                 </div>
                 <div>
                     <label for="deskripsi" class="mb-2 mt-2">Deskripsi</label>
@@ -116,7 +123,7 @@ function generateRandomString($length = 10)
             $alamat = htmlspecialchars($_POST['alamat']);
             $kordinat = htmlspecialchars($_POST['kordinat']);
             $harga_terendah = htmlspecialchars($_POST['harga_terendah']);
-            $harga_tertinggi = htmlspecialchars($_POST['harga_tertinggi']);
+            $kabupaten = htmlspecialchars($_POST['kabupaten']);
             $deskripsi = htmlspecialchars($_POST['deskripsi']);
             $akomodasi = htmlspecialchars($_POST['akomodasi']);
             $fasilitas = htmlspecialchars($_POST['fasilitas']);
@@ -177,7 +184,7 @@ function generateRandomString($length = 10)
                     }
                 }
 
-                $querytambah = mysqli_query($con, "INSERT INTO hotel(kategori_id, nama,  alamat, kordinat, foto, harga_terendah, harga_tertinggi, deskripsi, akomodasi, fasilitas) VALUES ('$kategori', '$nama', '$alamat', '$kordinat', '$name', '$harga_terendah','$harga_tertinggi', '$deskripsi', '$akomodasi', '$fasilitas')");
+                $querytambah = mysqli_query($con, "INSERT INTO hotel(kategori_id, nama,  alamat, kordinat, foto, harga_terendah, kabupaten, deskripsi, akomodasi, fasilitas) VALUES ('$kategori', '$nama', '$alamat', '$kordinat', '$name', '$harga_terendah','$kabupaten', '$deskripsi', '$akomodasi', '$fasilitas')");
                 if ($querytambah) {
                     ?>
                     <div class="alert alert-success mt-3" role="alert">

@@ -45,7 +45,6 @@ $count = mysqli_num_rows($querycomment);
     <!-- Navbar End -->
     <div class="detail" id="detail">
         <div class="rows">
-
             <div class="image-grid">
                 <img class="image-grid-col-2 image-grid-row-2" src="img/image/<?php echo $data['foto']; ?>" alt="">
                 <img class="image-grid-col-2" src="img/image/<?php echo $data['foto1']; ?>" alt="">
@@ -99,12 +98,14 @@ $count = mysqli_num_rows($querycomment);
                     <?php
                     $fasility = explode("-", $data['fasilitas']);
                     foreach ($fasility as $key => $listfasilitas) {
-                        ?>
-                        <div>
-                            <i class="fa-solid fa-circle-check"></i>
-                            <?php echo $listfasilitas; ?>
-                        </div>
-                        <?php
+                        if ($key > 0) { // Tambahkan kondisi untuk melewati indeks 0
+                            ?>
+                            <div>
+                                <i class="fa-solid fa-circle-check"></i>
+                                <?php echo $listfasilitas; ?>
+                            </div>
+                            <?php
+                        }
                     }
                     ?>
                 </div>

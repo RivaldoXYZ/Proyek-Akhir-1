@@ -62,6 +62,7 @@ function generateRandomString($length = 10)
             <h2>List Hotel/Penginapan</h2>
             <p class="text-muted">Berikut adalah daftar list Hotel/Penginapan yang ada pada database anda</p>
         </div>
+        <a href="hotel_tambah.php" class="btn btn-dark mb-3">Add New</a>
         <div class="table-responsive mt-3">
             <table class=" table">
                 <thead>
@@ -130,7 +131,7 @@ function generateRandomString($length = 10)
                     ?>
                 </tbody>
             </table>
-            <a href="hotel_tambah.php" class="btn btn-dark mb-3">Add New</a>
+
         </div>
     </div>
     <?php require "script.php"; ?>

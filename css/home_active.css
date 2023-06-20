@@ -152,10 +152,6 @@
     padding: 0;
 }
 
-.box .nav-footer {
-    display: flex;
-
-}
 
 .box .nav-footer a {
     flex: 0 0 20%;
@@ -197,7 +193,7 @@
 .image-grid {
     --gap: 16px;
     --num-cols: 4;
-    --row-height: 20rem;
+    --row-height: 25rem;
     box-sizing: border-box;
     padding: var(--gap);
     display: grid;
@@ -214,7 +210,7 @@
 }
 
 .image-grid-col-2 {
-    grid-column: span 3;
+    grid-column: span 2;
 }
 
 .image-grid-row-2 {
@@ -291,6 +287,11 @@
 .detail .rows .content .row .nama {
     display: flex;
     margin-top: 1rem;
+}
+
+.detail .rows .content .row .nama .price p {
+    font-weight: bold;
+    color: var(--bg5);
 }
 
 .detail .rows .content .row .alamat {

@@ -75,27 +75,26 @@ function generateRandomString($length = 10)
                 </div>
                 <div>
                     <label for="foto" class="mb-2 mt-2">Foto 1</label>
-                    <input type="file" name="foto" id="foto" class="form-control">
+                    <input type="file" name="foto[]" id="foto" class="form-control" multiple>
                 </div>
                 <div>
                     <label for="foto1" class="mb-2 mt-2">Foto 2</label>
-                    <input type="file" name="foto1" id="foto1" class="form-control">
+                    <input type="file" name="foto[]" id="foto1" class="form-control" multiple>
                 </div>
                 <div>
                     <label for="foto2" class="mb-2 mt-2">Foto 3</label>
-                    <input type="file" name="foto2" id="foto2" class="form-control">
+                    <input type="file" name="foto[]" id="foto2" class="form-control" multiple>
                 </div>
                 <div>
                     <label for="kabupaten" class="mb-2 mt-2">Harga Terendah</label>
-                    <input type="text" name="harga_terendah" id="harga_terendah" class="form-control"
-                        pattern="\d+(\.\d{3})?">
+                    <input type="text" name="harga_terendah" id="harga_terendah" class="form-control">
                 </div>
                 <div>
                     <label for="kabupaten" class="mb-2 mt-2">Kabupaten</label>
-                    <input type="text" name="kabupaten" id="kabupaten" class="form-control" pattern="\d+(\.\d{3})?">
+                    <input type="text" name="kabupaten" id="kabupaten" class="form-control">
                 </div>
                 <div>
-                    <label for="deskripsi" class="mb-2 mt-2">Deskripsi</label>
+                    <label for=" deskripsi" class="mb-2 mt-2">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"></textarea>
                 </div>
                 <div>
@@ -113,7 +112,6 @@ function generateRandomString($length = 10)
                 <div class="mt-3">
                     <button class="btn btn-primary" type="submit" name="simpan_hotel">Simpan</button>
                 </div>
-
             </form>
         </div>
         <?php
@@ -129,12 +127,17 @@ function generateRandomString($length = 10)
             $fasilitas = htmlspecialchars($_POST['fasilitas']);
 
             $target_dir = "../../img/image/";
-            $nama_file = basename($_FILES["foto"]["name"]);
-            $target_file = $target_dir . $nama_file;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            $image_size = $_FILES["foto"]["size"];
-            $random_name = generateRandomString(20);
-            $name = $random_name . "." . $imageFileType;
+            $uploaded_files = array();
+
+            for ($i = 0; $i < count($_FILES['foto']['name']); $i++) {
+                $file_name = $_FILES['foto']['name'][$i];
+                $file_tmp = $_FILES['foto']['tmp_name'][$i];
+                $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+                $random_name = generateRandomString(20);
+                $new_file_name = $random_name . '.' . $file_ext;
+                $uploaded_files[] = $new_file_name;
+                move_uploaded_file($file_tmp, $target_dir . $new_file_name);
+            }
 
             if ($nama_file != '') {
                 if ($image_size > 5000000) {
@@ -157,47 +160,20 @@ function generateRandomString($length = 10)
                     }
                 }
             }
-            if ($nama == '' || $kategori == '' || $alamat == '') {
+            $querytambah = mysqli_query($con, "INSERT INTO hotel(kategori_id, nama, alamat, kordinat, foto, foto1, foto2, harga_terendah, kabupaten, deskripsi, akomodasi, fasilitas) VALUES ('$kategori', '$nama', '$alamat', '$kordinat', '" . $uploaded_files[0] . "', '" . $uploaded_files[1] . "', '" . $uploaded_files[2] . "', '$harga_terendah','$kabupaten', '$deskripsi', '$akomodasi', '$fasilitas')");
+            if ($querytambah) {
                 ?>
-                <div class="alert alert-warning mt-3" role="alert">
-                    Nama,Kategori, Kordinat, dan alamat wajib di isi
+                <div class="alert alert-success mt-3" role="alert">
+                    Data Hotel Berhasil disimpan
                 </div>
+
+                <meta http-equiv="refresh" content="0; url=hotel.php">
                 <?php
             } else {
-                if ($nama_file != '') {
-                    if ($image_size > 500000) {
-                        ?>
-                        <div class="alert alert-warning mt-3" role="alert">
-                            File Tidak boleh lebih dari 500 Kb
-                        </div>
-                        <?php
-                    } else {
-                        if ($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png') {
-                            ?>
-                            <div class="alert alert-warning mt-3" role="alert">
-                                Format Gambar tidak sesuai
-                            </div>
-                            <?php
-                        } else {
-                            move_uploaded_file($_FILES["foto"]["tmp_name"], $target_dir . $name);
-                        }
-                    }
-                }
-
-                $querytambah = mysqli_query($con, "INSERT INTO hotel(kategori_id, nama,  alamat, kordinat, foto, harga_terendah, kabupaten, deskripsi, akomodasi, fasilitas) VALUES ('$kategori', '$nama', '$alamat', '$kordinat', '$name', '$harga_terendah','$kabupaten', '$deskripsi', '$akomodasi', '$fasilitas')");
-                if ($querytambah) {
-                    ?>
-                    <div class="alert alert-success mt-3" role="alert">
-                        Data Hotel Berhasil disimpan
-                    </div>
-
-                    <meta http-equiv="refresh" content="0; url=hotel.php">
-                    <?php
-                } else {
-                    echo mysqli_error($con);
-                }
+                echo mysqli_error($con);
             }
-        } ?>
+        }
+        ?>
     </div>
     <?php require "script.php"; ?>
 </body>

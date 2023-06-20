@@ -1,16 +1,7 @@
 <?php
 require "Connection/koneksi.php";
 $id = $_GET['id'];
-
-$querykamar = mysqli_query($con, "SELECT * FROM kamar WHERE id_hotel = '$id'");
-$countkamar = mysqli_num_rows($querykamar);
-
-if ($countkamar > 0) {
-
-    $query = mysqli_query($con, "SELECT H.*, KMR.* FROM hotel H JOIN kamar KMR ON H.id=KMR.id_hotel WHERE id = '$id'");
-} else {
-    $query = mysqli_query($con, "SELECT* FROM hotel WHERE id = '$id'");
-}
+$query = mysqli_query($con, "SELECT* FROM hotel WHERE id = '$id'");
 
 $querycomment = mysqli_query($con, "SELECT * FROM diskusi WHERE id_hotel = '$id'");
 $jumlah = mysqli_num_rows($query);
@@ -57,8 +48,8 @@ $count = mysqli_num_rows($querycomment);
 
             <div class="image-grid">
                 <img class="image-grid-col-2 image-grid-row-2" src="img/image/<?php echo $data['foto']; ?>" alt="">
-                <img src="img/image/<?php echo $data['foto1']; ?>" alt="">
-                <img src="img/image/<?php echo $data['foto2']; ?>" alt="">
+                <img class="image-grid-col-2" src="img/image/<?php echo $data['foto1']; ?>" alt="">
+                <img class="image-grid-col-2" src="img/image/<?php echo $data['foto2']; ?>" alt="">
             </div>
             <div class="nav-section">
                 <a href="#info">Info Umum</a>
@@ -106,7 +97,7 @@ $count = mysqli_num_rows($querycomment);
                 <p class="data-fasility-tittle">Fasilitas Yang Tersedia : <br></p>
                 <div class="data-fasility">
                     <?php
-                    $fasility = explode(",", $data['fasilitas']);
+                    $fasility = explode("-", $data['fasilitas']);
                     foreach ($fasility as $key => $listfasilitas) {
                         ?>
                         <div>

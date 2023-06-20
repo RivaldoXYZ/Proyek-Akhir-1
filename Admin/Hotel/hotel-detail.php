@@ -70,13 +70,28 @@ function generateRandomString($length = 10)
                     <input type="text" name="kordinat" id="kordinat" value="<?php echo $data['kordinat']; ?>"
                         class="form-control" autocomplete="off">
                 </div>
+
                 <div>
-                    <label for="currentFoto">Foto Hotel Sekarang</label>
-                    <img src="../img/image/<?php echo $data['foto']; ?>" alt="" width="300rem">
+                    <label for="foto1" class="mb-2 mt-2">Foto 1</label>
+                    <input type="file" name="foto[]" id="foto" class="form-control" multiple>
                 </div>
                 <div>
-                    <label for="foto" class="mb-2 mt-2">Foto</label>
-                    <input type="file" name="foto" id="foto" class="form-control">
+                    <img src="../../img/image/<?php echo $data['foto']; ?>" alt="" width="300rem">
+                </div>
+
+                <div>
+                    <label for="foto1" class="mb-2 mt-2">Foto 2</label>
+                    <input type="file" name="foto[]" id="foto1" class="form-control" multiple>
+                </div>
+                <div>
+                    <img src="../../img/image/<?php echo $data['foto1']; ?>" alt="" width="300rem">
+                </div>
+                <div>
+                    <label for="foto2" class="mb-2 mt-2">Foto 3</label>
+                    <input type="file" name="foto[]" id="foto2" class="form-control" multiple>
+                </div>
+                <div>
+                    <img src="../../img/image/<?php echo $data['foto2']; ?>" alt="" width="300rem">
                 </div>
                 <div>
                     <label for="harga_terendah" class="mb-2 mt-2">Harga Terendah</label>
@@ -84,7 +99,7 @@ function generateRandomString($length = 10)
                         value="<?php echo $data['harga_terendah']; ?>" class="form-control" autocomplete="off">
                 </div>
                 <div>
-                    <label for="kabupaten" class="mb-2 mt-2">kabupaten</label>
+                    <label for="kabupaten" class="mb-2 mt-2">Kabupaten</label>
                     <input type="text" name="kabupaten" id="kabupaten" value="<?php echo $data['kabupaten']; ?>"
                         class="form-control" autocomplete="off">
                 </div>
@@ -134,85 +149,32 @@ function generateRandomString($length = 10)
                 $fasilitas = htmlspecialchars($_POST['fasilitas']);
 
                 $target_dir = "../../img/image/";
-                $nama_file = basename($_FILES["foto"]["name"]);
-                $target_file = $target_dir . $nama_file;
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $image_size = $_FILES["foto"]["size"];
-                $random_name = generateRandomString(20);
-                $name = $random_name . "." . $imageFileType;
+                $uploaded_files = array();
 
-                if ($nama_file != '') {
-                    if ($image_size > 500000) {
-                        ?>
-                        <div class="alert alert-warning mt-3" role="alert">
-                            File tidak boleh lebih dari 500 Kb
-                        </div>
-                        <?php
-                        exit; // Berhenti jika file terlalu besar
-                    } else {
-                        if ($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png') {
-                            ?>
-                            <div class="alert alert-warning mt-3" role="alert">
-                                Format gambar tidak sesuai
-                            </div>
-                            <?php
-                            exit; // Berhenti jika format gambar tidak sesuai
-                        } else {
-                            move_uploaded_file($_FILES["foto"]["tmp_name"], $target_dir . $name);
-                        }
-                    }
+                for ($i = 0; $i < count($_FILES['foto']['name']); $i++) {
+                    $file_name = $_FILES['foto']['name'][$i];
+                    $file_tmp = $_FILES['foto']['tmp_name'][$i];
+                    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+                    $random_name = generateRandomString(20);
+                    $new_file_name = $random_name . '.' . $file_ext;
+                    $uploaded_files[] = $new_file_name;
+                    move_uploaded_file($file_tmp, $target_dir . $new_file_name);
                 }
-                if ($nama == '' || $kategori == '' || $alamat == '') {
+
+                $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id = '$kategori', nama = '$nama', alamat = '$alamat', kordinat = '$kordinat', harga_terendah = '$harga_terendah', kabupaten = '$kabupaten', deskripsi = '$deskripsi', akomodasi = '$akomodasi', fasilitas = '$fasilitas', foto = '" . $uploaded_files[0] . "', foto1 = '" . $uploaded_files[1] . "', foto2 = '" . $uploaded_files[2] . "' WHERE id = '$id'");
+
+                if ($queryUpdate) {
                     ?>
-                    <div class="alert alert-warning mt-3" role="alert">
-                        Nama,Kategori, Kordinat, dan Lokasi wajib di isi
+                    <div class="alert alert-success mt-3" role="alert">
+                        Data Hotel Berhasil diupdate
                     </div>
+                    <meta http-equiv="refresh" content="0; url=hotel.php">
                     <?php
                 } else {
-                    $queryUpdate = mysqli_query($con, "UPDATE hotel SET kategori_id ='$kategori', nama='$nama', alamat='$alamat', kordinat='$kordinat', harga_terendah='$harga_terendah',kabupaten='$kabupaten', deskripsi='$deskripsi', akomodasi= '$akomodasi', fasilitas='$fasilitas' WHERE id='$id'");
-
-                    if ($nama_file != '') {
-                        if ($image_size > 500000000) {
-                            ?>
-                            <div class="alert alert-warning mt-3" role="alert">
-                                File Tidak boleh lebih dari 50 Mb
-                            </div>
-                            <?php
-                        } else {
-                            if ($imageFileType != 'jpg' && $imageFileType != 'jpeg' && $imageFileType != 'png') {
-                                ?>
-                                <div class="alert alert-warning mt-3" role="alert">
-                                    Format Gambar tidak sesuai
-                                </div>
-                                <?php
-                            } else {
-                                move_uploaded_file($_FILES["foto"]["tmp_name"], $target_dir . $name);
-                                $queryUpdate = mysqli_query($con, "UPDATE hotel SET foto='$name' WHERE id='$id'");
-                                if ($queryUpdate) {
-                                    ?>
-                                    <div class="alert alert-success mt-3" role="alert">
-                                        Data Hotel Berhasil diupdate
-                                    </div>
-                                    <meta http-equiv="refresh" content="0; url=hotel.php">
-                                    <?php
-                                } else {
-                                    echo mysqli_error($con);
-                                }
-                            }
-                        }
-                    }
-                    if ($queryUpdate) {
-                        ?>
-                        <div class="alert alert-success mt-3" role="alert">
-                            Hotel Berhasil diHapus
-                            <meta http-equiv="refresh" content="0; url=hotel.php">
-                        </div>
-                        <?php
-                    } else {
-                        echo mysqli_error($con);
-                    }
+                    echo mysqli_error($con);
                 }
             }
+
             if (isset($_POST['hapus_hotel'])) {
                 $queryDelete = mysqli_query($con, "DELETE FROM hotel WHERE id='$id'");
                 if ($queryDelete) {

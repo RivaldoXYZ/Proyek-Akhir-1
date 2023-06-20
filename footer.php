@@ -6,12 +6,12 @@
                 and accommodations in Tobago. Our mission is to be your go-to resource for all things related to finding
                 the perfect place to stay on the island.</p>
         </div>
-        <!-- <div class="box">
+        <div class="box">
             <h3>follow us</h3>
             <a href="#"><i class="fa-brands fa-facebook fa-lg"></i>&nbsp;&nbsp; facebook</a>
             <a href="#"><i class="fa-brands fa-instagram fa-lg"></i>&nbsp;&nbsp; instagram</a>
             <a href="#"><i class="fa-brands fa-twitter fa-lg"></i>&nbsp; twitter</a>
-        </div> -->
+        </div>
         <div class="box">
             <h3>quick links</h3>
             <div class="nav-footer">

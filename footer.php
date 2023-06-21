@@ -8,9 +8,9 @@
         </div>
         <div class="box">
             <h3>follow us</h3>
-            <a href="#"><i class="fa-brands fa-facebook fa-lg"></i>&nbsp;&nbsp; facebook</a>
-            <a href="#"><i class="fa-brands fa-instagram fa-lg"></i>&nbsp;&nbsp; instagram</a>
-            <a href="#"><i class="fa-brands fa-twitter fa-lg"></i>&nbsp; twitter</a>
+            <a href="https://www.facebook.com/profile.php?id=100048130653042&mibextid=ZbWKwL" target="_blank" ><i class="fa-brands fa-facebook fa-lg"></i>&nbsp;&nbsp; facebook</a>
+            <a href="https://instagram.com/sofiasthng?igshid=MzRlODBiNWFlZA== " target="_blank"><i class="fa-brands fa-instagram fa-lg"></i>&nbsp;&nbsp; instagram</a>
+            <a href="https://twitter.com/rivaldo_xyz?t=QjcORMOrjCbSTscMBwaZmw&s=09" target="_blank"><i class="fa-brands fa-twitter fa-lg"></i>&nbsp; twitter</a>
         </div>
         <div class="box">
             <h3>quick links</h3>

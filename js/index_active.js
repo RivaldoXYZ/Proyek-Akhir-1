@@ -109,3 +109,7 @@ starFilterSelect.addEventListener('change', function () {
     currentUrl.searchParams.set('star-filter', selectedValue);
     window.location.href = currentUrl.toString();
 });
+
+function goback() {
+    window.history.back();
+}

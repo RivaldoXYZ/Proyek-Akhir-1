@@ -45,6 +45,7 @@ $count = mysqli_num_rows($querycomment);
     <!-- Navbar End -->
     <div class="detail" id="detail">
         <div class="rows">
+            <a class="back" onclick="goback()"><i class="fa-solid fa-left-long fa-sm"></i> Go Back</a>
             <div class="image-grid">
                 <img class="image-grid-col-2 image-grid-row-2" src="img/image/<?php echo $data['foto']; ?>" alt="">
                 <img class="image-grid-col-2" src="img/image/<?php echo $data['foto1']; ?>" alt="">
